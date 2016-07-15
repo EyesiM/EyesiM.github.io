@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      CSS 代码规范以及 CSS 重难点 | EyesiM&#39;s Blog 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="EyesiM">
+    
+    
+
+    <meta name="description" content="代码规范http://www.uisdc.com/css-written-specifications
+CSS书写顺序1.位置属性(position, top, right, z-index, display, float等)2.大小(width, height, padding, margin)3.文字系列(font, line-height, letter-spacing, color-">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS 代码规范以及 CSS 重难点 | EyesiM's Blog">
+<meta property="og:url" content="http://yoursite.com/2016/07/15/代码规范与css重难点/index.html">
+<meta property="og:site_name" content="EyesiM's Blog">
+<meta property="og:description" content="代码规范http://www.uisdc.com/css-written-specifications
+CSS书写顺序1.位置属性(position, top, right, z-index, display, float等)2.大小(width, height, padding, margin)3.文字系列(font, line-height, letter-spacing, color-">
+<meta property="og:image" content="http://images.cnblogs.com/cnblogs_com/cchyao/%E6%A0%87%E5%87%86W3C%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B%E5%92%8CIE%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8BCSS%E5%B8%83%E5%B1%80%E7%BB%8F%E5%85%B8%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B/1.JPG">
+<meta property="og:updated_time" content="2016-07-14T06:50:50.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CSS 代码规范以及 CSS 重难点 | EyesiM's Blog">
+<meta name="twitter:description" content="代码规范http://www.uisdc.com/css-written-specifications
+CSS书写顺序1.位置属性(position, top, right, z-index, display, float等)2.大小(width, height, padding, margin)3.文字系列(font, line-height, letter-spacing, color-">
+<meta name="twitter:image" content="http://images.cnblogs.com/cnblogs_com/cchyao/%E6%A0%87%E5%87%86W3C%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B%E5%92%8CIE%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8BCSS%E5%B8%83%E5%B1%80%E7%BB%8F%E5%85%B8%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B/1.JPG">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/china-social-icon.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">EyesiM&#39;s Blog</a></h1>
+        <hr class="panel-cover__divider" />
+
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title="" class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title="" class="">关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title="" class="">归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+<nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+    
+      <!-- Github -->
+      <li class="navigation__item">
+        <a href="https://github.com/EyesiM" title="Huno on GitHub">
+          <i class='icon icon-social-github'></i>
+          <span class="label">GitHub</span>
+        </a>
+      </li>
+    
+
+    <!-- China social icon -->
+    <!--
+    
+      <li class="navigation__item">
+        <a href="" title="">
+          <i class='icon cs-icon-douban'></i>
+          <span class="label">Douban</span>
+        </a>
+      </li>
+
+      <li class="navigation__item">
+        <a href="" title="">
+          <i class='icon cs-icon-weibo'></i>
+          <span class="label">Weibo</span>
+        </a>
+      </li>
+
+    -->
+
+
+
+  </ul>
+</nav>
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">CSS 代码规范以及 CSS 重难点</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2016-07-15" class="post-meta__date date">2016-07-15</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+            <font class="categories">
+            &#8226; 分类:
+            <a class="categories-link" href="/categories/CSS/">CSS</a>
+            </font>
+          
+
+          
+             &#8226; 标签:
+            <font class="tags">
+              <a class="tags-link" href="/tags/CSS/">CSS</a>
+            </font>
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <hr>
+<h2 id="代码规范"><a href="#代码规范" class="headerlink" title="代码规范"></a><strong>代码规范</strong></h2><p><a href="http://www.uisdc.com/css-written-specifications" target="_blank" rel="external">http://www.uisdc.com/css-written-specifications</a></p>
+<h3 id="CSS书写顺序"><a href="#CSS书写顺序" class="headerlink" title="CSS书写顺序"></a><strong>CSS书写顺序</strong></h3><p><br>1.位置属性(position, top, right, z-index, display, float等)<br>2.大小(width, height, padding, margin)<br>3.文字系列(font, line-height, letter-spacing, color- text-align等)<br>4.背景(background, border等)<br>5.其他(animation, transition等)</p>
+<h3 id="CSS书写规范"><a href="#CSS书写规范" class="headerlink" title="CSS书写规范"></a><strong>CSS书写规范</strong></h3><ul>
+<li><strong>使用CSS缩写属性</strong><br>CSS有些属性是可以缩写的，比如padding,margin,font等等，这样精简代码同时又能提高用户的阅读体验。</li>
+</ul>
+<p>font: font-style | font-variant | font-weight | font-size | line-height | font-family</p>
+<ul>
+<li><strong>去掉小数点前的”0″</strong></li>
+<li><strong>简写命名</strong><br>navigation-&gt;nav<br>author-&gt;atr</li>
+<li><strong>16进制颜色代码缩写</strong><br>#FFFFFF-&gt;</li>
+<li><p><strong>连字符CSS选择器命名规范</strong><br> 不要用 _ 而用 -</p>
+<pre><code>输入的时候少按一个shift键；
+浏览器兼容问题 （比如使用_tips的选择器命名，在IE6是无效的）
+能良好区分JavaScript变量命名（JS变量命名是用”_”）
+</code></pre></li>
+<li><p><strong>不要随意使用id</strong><br>id在JS是唯一的，不能多次使用，而使用class类选择器却可以重复使用，另外id的优先级优先与class，所以id应该按需使用，而不能滥用。</p>
+</li>
+<li><strong>为选择器添加状态前缀</strong></li>
+</ul>
+<hr>
+<hr>
+<h2 id="css-重难点"><a href="#css-重难点" class="headerlink" title="css 重难点"></a><strong>css 重难点</strong></h2><h3 id="1-单位-px-em-rem"><a href="#1-单位-px-em-rem" class="headerlink" title="1. 单位 px em rem"></a>1. 单位 px em rem</h3><ul>
+<li><strong>px</strong></li>
+</ul>
+<p>相对显示器的物理像素点而言</p>
+<ul>
+<li><p><strong>em</strong><br>如果没有相对对象，则根据浏览器的字体大小相对来说，它的值是根据父元素字体大小而言的</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span>&#123;</span><br><span class="line">    <span class="attribute">font-size</span>:<span class="number">62.5%</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-id">#main</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>:<span class="number">90em</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>rem</strong><br>css3 新增的属性<br>与 em 不同的是，它的大小只相对&lt; html&gt;根元素而言</p>
+</li>
+</ul>
+<h3 id="2-颜色"><a href="#2-颜色" class="headerlink" title="2. 颜色"></a>2. 颜色</h3><ul>
+<li>颜色名<br>例如，red blue</li>
+<li>rgb<br>rgb(255,255,255)</li>
+<li>rgba<br>rgb(255,255,255,.8)</li>
+<li>十六进制<br>#FFFFFF #FFF</li>
+</ul>
+<h3 id="3-margin-amp-padding"><a href="#3-margin-amp-padding" class="headerlink" title="3. margin &amp; padding"></a>3. margin &amp; padding</h3><p>margin 可有 1-4 值，默认值为 0px;</p>
+<ul>
+<li>1 个值的时候，表示 上下左右 </li>
+<li>2 个值的时候，表示 上下 左右</li>
+<li>3 个值的时候，表示 上 左右 下</li>
+<li>4 个值的时候，遵循 TRBL 规则，即 top right bottom left 上 右 下 左 的瞬时间规则。</li>
+</ul>
+<p>例如：<br><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">margin</span>: <span class="number">20px</span>;</span><br><span class="line"><span class="attribute">margin</span>: <span class="number">10px</span> <span class="number">20px</span>;</span><br><span class="line"><span class="attribute">margin</span>: <span class="number">10px</span> <span class="number">20px</span> <span class="number">10px</span>;</span><br><span class="line"><span class="attribute">margin</span>: <span class="number">10px</span> <span class="number">20px</span> <span class="number">10px</span> <span class="number">20px</span> ;</span><br></pre></td></tr></table></figure></p>
+<p>特殊用法：<br><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">margin</span>: <span class="number">0</span> auto;</span><br></pre></td></tr></table></figure></p>
+<p>意为上下边距为 0 ，左右边距根据宽度自适应。以上写法可以达到居中的效果。(但要注意给居中的元素一个宽度，并且该元素不能浮动，否则居中无效)</p>
+<p>padding 与 margin 设值是一样的规则，但是不能设置负值，另外如果元素背景有背景属性，则背景会覆盖内边距。</p>
+<h3 id="4-盒子模型"><a href="#4-盒子模型" class="headerlink" title="4. 盒子模型"></a>4. 盒子模型</h3><p><img src="http://images.cnblogs.com/cnblogs_com/cchyao/%E6%A0%87%E5%87%86W3C%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B%E5%92%8CIE%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8BCSS%E5%B8%83%E5%B1%80%E7%BB%8F%E5%85%B8%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B/1.JPG" alt="标准盒子模型"></p>
+<ul>
+<li><p>7个属性：(margin)左右外边距，(padding)左右内边距，(border)左右边框，width，子元素加上7个属性为父元素的width属性，但 IE早期的版本包括 IE6 的浏览器中，元素的 width 属性指的是 border+padding+content</p>
+</li>
+<li><p>子元素不达父元素的width，左边距10px,右边距10px,若父元素减去子元素七个属性还差10px,则右边距为20px;</p>
+</li>
+<li><p>垂直margin:auto auto;height自动归零</p>
+</li>
+<li><p>能设置为auto的属性为width margin-left margin-right</p>
+</li>
+<li><p>上外边距与下外边距合并，以大为准,只有普通文档流中块框的垂直外边距才会发生外边距叠加，行内框、浮动框、或绝对定位框之间的外边距是不会发生叠加的</p>
+</li>
+</ul>
+<h3 id="5-absolute-、-relative-与-fixed-的区别"><a href="#5-absolute-、-relative-与-fixed-的区别" class="headerlink" title="5. absolute 、 relative 与 fixed 的区别"></a>5. absolute 、 relative 与 fixed 的区别</h3><p>讲到 absolute 时需要先知道文档流的概念。</p>
+<p>简单来说，文档流是文档中可显示对象在排列时所占用的位置。</p>
+<ul>
+<li><p>absolute<br>absolute 时，它会脱离原来的文档流，就好像这个元素不存在了一样，漂浮在其没有设置为 absolute 时的文档位置的地方，其他元素会占据其原来的位置。也就是说 absolute 是相对最近 position 为 relative 或 absolute 的父元素定位，默认相对与 body 定位。</p>
+</li>
+<li><p>relative<br>而设置为 relative 时，元素并没有脱离文档流，这个时候给其设置 top 跟 left 值，它只会在原来位置的基础上进行肉眼上的移动，而其在文档流上的位置并没有发生改变。</p>
+</li>
+<li><p>fixed<br>fixed 将元素直接以浏览器窗口为定位对象，给其设置 top 跟 left 值时，元素将相对固定在浏览器窗口的对应位置上（起点为浏览器窗口的最左上方那一个点）</p>
+</li>
+<li><p>默认为static</p>
+</li>
+</ul>
+<h3 id="6-行内元素和块级元素"><a href="#6-行内元素和块级元素" class="headerlink" title="6.行内元素和块级元素"></a>6.行内元素和块级元素</h3><p>以下内容来自百度</p>
+<p>块级元素具有以下特点：</p>
+<p>1.总是在新行上开始，占据一整行；<br>2.高度，行高以及外边距和内边距都可控制；<br>3.宽带始终是与浏览器宽度一样，与内容无关；<br>4.它可以容纳内联元素和其他块元素。</p>
+<p>行内元素的特点：</p>
+<p>1.和其他元素都在一行上；<br>2.高，行高及外边距和内边距部分可改变；<br>3.宽度只与内容有关；<br>4.行内元素只能容纳文本或者其他行内元素。<br>不可以设置宽高，其宽度随着内容增加，高度随字体大小而改变，内联元素可以设置外边界，但是外边界不对上下起作用，只能对左右起作用，也可以设置内边界，但是内边界在ie6中不对上下起作用，只能对左右起作用</p>
+<p>值得一提的是，块级元素可以通过设置为 display: inline-block; 使其可以在行内容纳其他行内元素。</p>
+<p>以下链接记录了哪些是行内元素，哪些是块级元素<br><a href="http://q.cnblogs.com/q/36975/" target="_blank" rel="external">http://q.cnblogs.com/q/36975/</a></p>
+<h3 id="7-居中"><a href="#7-居中" class="headerlink" title="7.居中"></a>7.居中</h3><ul>
+<li><p>margin和width实现水平居中</p>
+<p> 容器上定义一个宽度，然后配合margin的左右值为“auto”实现</p>
+</li>
+<li><p>inline-block实现水平居中方法<br> 利用父元素设置 text-align:center; 这一个除了对内容文本居中外，对子元素的居中也起作用</p>
+</li>
+<li><p>浮动实现水平居中的方法<br>利用 position<br><a href="http://www.w3cplus.com/css/elements-horizontally-center-with-css.html" target="_blank" rel="external">http://www.w3cplus.com/css/elements-horizontally-center-with-css.html</a></p>
+</li>
+<li><p>绝对定位实现水平居中</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.ele</span> &#123;</span><br><span class="line">	<span class="attribute">position</span>: absolute;</span><br><span class="line">	<span class="attribute">width</span>: 宽度值;</span><br><span class="line">	<span class="attribute">left</span>: <span class="number">50%</span>;</span><br><span class="line">	<span class="attribute">margin-left</span>: <span class="built_in">-</span>(宽度值/2);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>当不知道元素宽度时可以结合一下浮动实现的方法</p>
+<ul>
+<li>css3 的 flex 实现水平居中方法、CSS3的fit-content实现水平居中方法等</li>
+</ul>
+<p><a href="https://css-tricks.com/centering-css-complete-guide/" target="_blank" rel="external">https://css-tricks.com/centering-css-complete-guide/</a></p>
+<h3 id="8-布局"><a href="#8-布局" class="headerlink" title="8.布局"></a>8.布局</h3><p>基本概念：定位、浮动、外边距操纵</p>
+<p>常见的布局</p>
+<ul>
+<li><p><strong>两栏布局</strong><br> left+right</p>
+</li>
+<li><p><strong>三栏布局</strong></p>
+<ul>
+<li>两栏基础上</li>
+<li>左右两栏宽度固定，中间自适应</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p><strong>固定布局</strong> </p>
+<p> 固定尺寸，只有当设计的宽度是不变的时候用固定布局最简便<br> 缺点： 分辨率低的在分辨率高的显示器上面显示，设计会缩小并且出现在屏幕中间；分辨率高的设计在分辨率低的显示器上面显示会出现滚动条，行长与文本易读性问题等等<br>而下面说的流式布局、弹性布局可以解决这些问题</p>
+</li>
+<li><p><strong>流式布局</strong> </p>
+<p> 尺寸用百分比而非像素，视情况对较小窗口设置以 em 为单位的最大宽度等等</p>
+</li>
+<li><p><strong>弹性布局</strong></p>
+<p> em为单位，老式的浏览器进行页面缩放可能还需用到</p>
+</li>
+<li><p><strong>css3 列</strong><br> css3 也可以创建等高文本列，可以通过，column-count column-width 和 column-gap 来完成，但是目前浏览器对 css3中的列支持还不广泛。</p>
+</li>
+<li><p><strong>flex 布局</strong><br> flex 布局又属于弹性布局的一种，依赖 display属性 + position属性 + float属性。<br><a href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html?utm_source=tuicool" target="_blank" rel="external">http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html?utm_source=tuicool</a></p>
+</li>
+<li><p><strong>另外一提，margin 负值在布局上面也是有很多作用的</strong> </p>
+</li>
+</ul>
+<p><a href="http://www.topcss.org/%E8%B4%9F%E5%80%BC%E4%B9%8B%E7%BE%8E%EF%BC%9A%E8%B4%9F%E5%80%BC%E5%9C%A8%E9%A1%B5%E9%9D%A2%E5%B8%83%E5%B1%80%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/" target="_blank" rel="external">http://www.topcss.org/%E8%B4%9F%E5%80%BC%E4%B9%8B%E7%BE%8E%EF%BC%9A%E8%B4%9F%E5%80%BC%E5%9C%A8%E9%A1%B5%E9%9D%A2%E5%B8%83%E5%B1%80%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/</a></p>
+<h3 id="9-选择器优先级"><a href="#9-选择器优先级" class="headerlink" title="9.选择器优先级"></a>9.选择器优先级</h3><p>优先级从高到低排序如下：</p>
+<p>1.在属性后面使用 !important 的优先级最高，它会覆盖页面内任何位置定义的元素样式（不支持 IE6）</p>
+<p>2.在html中给元素标签加 style ，但不符合结构与样式分离的原则，故不推荐使用</p>
+<p>3.id选择器</p>
+<p>4.类选择器、属性选择器、伪类选择器定义（伪类概念：<a href="http://www.w3school.com.cn/css/css_pseudo_classes.asp）" target="_blank" rel="external">http://www.w3school.com.cn/css/css_pseudo_classes.asp）</a></p>
+<p>5.类型选择器</p>
+<p>6.通配选择器</p>
+
+  </section>
+
+  
+  
+
+<section class="post-comments">
+
+    <div class="ds-thread" data-thread-key="2016/07/15/代码规范与css重难点/"></div>
+
+    <script type="text/javascript">
+      var duoshuoQuery = {short_name:"letian"};
+      (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+        || document.getElementsByTagName('body')[0]).appendChild(ds);
+      })();
+    </script> 
+
+</section>
+
+
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright">&copy; 2014-2015. | 由<a href="https://hexo.io/">Hexo</a>强力驱动 | 主题<a href="https://github.com/someus/huno">Huno</a></span>
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript"> 
+        $(document).ready(function(){
+            MathJax.Hub.Config({ 
+                tex2jax: {inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']]} 
+            });
+        });
+    </script>
+
+
+    
+
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>

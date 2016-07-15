@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      ECMAScript 6 新特性 | EyesiM&#39;s Blog 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="EyesiM">
+    
+    
+
+    <meta name="description" content="##内容目录[TOC]
+##1.let 与 const
+同其他语言一样，JS中的变量作用域是函数域而不是块级分割的，但涉及到变量提升和闭包等问题时， var 并不能很方便地满足我们的需求，于是出现了 let 与  const 这两个定义变量的关键词;
+我们来看一个例子：1234567891011121314    var a = 5;	if(true)&amp;#123;	    var a = 10;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ECMAScript 6 新特性 | EyesiM's Blog">
+<meta property="og:url" content="http://yoursite.com/2016/07/15/aboutes/index.html">
+<meta property="og:site_name" content="EyesiM's Blog">
+<meta property="og:description" content="##内容目录[TOC]
+##1.let 与 const
+同其他语言一样，JS中的变量作用域是函数域而不是块级分割的，但涉及到变量提升和闭包等问题时， var 并不能很方便地满足我们的需求，于是出现了 let 与  const 这两个定义变量的关键词;
+我们来看一个例子：1234567891011121314    var a = 5;	if(true)&amp;#123;	    var a = 10;">
+<meta property="og:image" content="http://7xkopm.com1.z0.glb.clouddn.com/foreach.png">
+<meta property="og:image" content="http://7xkopm.com1.z0.glb.clouddn.com/foreachr.png">
+<meta property="og:image" content="http://7xkopm.com1.z0.glb.clouddn.com/index.png">
+<meta property="og:image" content="http://7xkopm.com1.z0.glb.clouddn.com/forinresult.png">
+<meta property="og:image" content="http://7xkopm.com1.z0.glb.clouddn.com/forin.png">
+<meta property="og:image" content="http://7xkopm.com1.z0.glb.clouddn.com/foreachr.png">
+<meta property="og:image" content="http://7xkopm.com1.z0.glb.clouddn.com/forof.png">
+<meta property="og:image" content="http://7xkopm.com1.z0.glb.clouddn.com/foreachr.png">
+<meta property="og:updated_time" content="2016-04-18T19:28:29.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ECMAScript 6 新特性 | EyesiM's Blog">
+<meta name="twitter:description" content="##内容目录[TOC]
+##1.let 与 const
+同其他语言一样，JS中的变量作用域是函数域而不是块级分割的，但涉及到变量提升和闭包等问题时， var 并不能很方便地满足我们的需求，于是出现了 let 与  const 这两个定义变量的关键词;
+我们来看一个例子：1234567891011121314    var a = 5;	if(true)&amp;#123;	    var a = 10;">
+<meta name="twitter:image" content="http://7xkopm.com1.z0.glb.clouddn.com/foreach.png">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/china-social-icon.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">EyesiM&#39;s Blog</a></h1>
+        <hr class="panel-cover__divider" />
+
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title="" class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title="" class="">关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title="" class="">归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+<nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+    
+      <!-- Github -->
+      <li class="navigation__item">
+        <a href="https://github.com/EyesiM" title="Huno on GitHub">
+          <i class='icon icon-social-github'></i>
+          <span class="label">GitHub</span>
+        </a>
+      </li>
+    
+
+    <!-- China social icon -->
+    <!--
+    
+      <li class="navigation__item">
+        <a href="" title="">
+          <i class='icon cs-icon-douban'></i>
+          <span class="label">Douban</span>
+        </a>
+      </li>
+
+      <li class="navigation__item">
+        <a href="" title="">
+          <i class='icon cs-icon-weibo'></i>
+          <span class="label">Weibo</span>
+        </a>
+      </li>
+
+    -->
+
+
+
+  </ul>
+</nav>
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">ECMAScript 6 新特性</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2016-07-15" class="post-meta__date date">2016-07-15</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+            <font class="categories">
+            &#8226; 分类:
+            <a class="categories-link" href="/categories/JS/">JS</a>
+            </font>
+          
+
+          
+             &#8226; 标签:
+            <font class="tags">
+              <a class="tags-link" href="/tags/ECMAScript-6-新特性/">ECMAScript 6 新特性</a>
+            </font>
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <hr>
+<p>##<strong>内容目录</strong><br>[TOC]</p>
+<p>##1.let 与 const</p>
+<p>同其他语言一样，JS中的变量作用域是函数域而不是块级分割的，但涉及到变量提升和闭包等问题时， var 并不能很方便地满足我们的需求，于是出现了 let 与  const 这两个定义变量的关键词;</p>
+<p>我们来看一个例子：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">    <span class="keyword">var</span> a = <span class="number">5</span>;</span><br><span class="line">	<span class="keyword">if</span>(<span class="literal">true</span>)&#123;</span><br><span class="line">	    <span class="keyword">var</span> a = <span class="number">10</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">console</span>.log(a);<span class="comment">//10</span></span><br><span class="line"><span class="string">``</span><span class="string">`	</span><br><span class="line">此时变量 a 输出的值为 10 ,我们可以在这段代码中看到，在 if block 内外都有一个关于 a 的定义，而事实上，他们公用一个内存，为此，ECMAScript 用 let 关键词修复了这一个问题。</span><br><span class="line"></span><br><span class="line">`</span><span class="string">``</span>js</span><br><span class="line">    <span class="keyword">let</span> a = <span class="number">5</span>;</span><br><span class="line">    <span class="keyword">if</span>(<span class="literal">true</span>)&#123;</span><br><span class="line">        <span class="keyword">let</span> a = <span class="number">10</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">console</span>.log(a); <span class="comment">//5</span></span><br></pre></td></tr></table></figure></p>
+<p>当 let 作用域块级作用域中，只要是 let 定义的变量，他就只能在所定义的那个花括号内起作用 。此外 ECMAScript 还添加了另外一个关键词 const ，这个关键词一旦定义了一个变量，这个变量就不能再被修改了。</p>
+<p>例如：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> aa = <span class="number">11</span>;</span><br><span class="line">alert(aa) <span class="comment">//11</span></span><br><span class="line">aa = <span class="number">22</span>;</span><br><span class="line">alert(aa) <span class="comment">//11</span></span><br></pre></td></tr></table></figure></p>
+<p>##2.类<br>原来的版本里说过，ECMAscript 是没有类的概念的，但在 ECMAScript 6 里面增添了一个 class 的关键词，我们可以把属性和方法定义在一个类里面,而且有类之后，继承那些问题就不用那么麻烦了</p>
+<p>例如：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Animal = (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">   <span class="function"><span class="keyword">function</span> <span class="title">Animal</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">       <span class="keyword">this</span>.name = name;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="comment">// Methods</span></span><br><span class="line">   Animal.prototype.doSomething = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">       <span class="built_in">console</span>.log(<span class="string">"I'm a "</span> + <span class="keyword">this</span>.name);</span><br><span class="line">   &#125;;</span><br><span class="line">   <span class="keyword">return</span> Animal;</span><br><span class="line">&#125;)();</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> lion = <span class="keyword">new</span> Animal(<span class="string">"Lion"</span>);</span><br><span class="line">lion.doSomething();<span class="comment">//I'm a Lion</span></span><br></pre></td></tr></table></figure></p>
+<p>在这段代码我们可以看到，lion 这个对象继承了 Animal 原型对象的 doSomething 方法，最后输出了 I’m a Lion </p>
+<p>##3.解构赋值<br>通常来说，我们访问数组里面的元素形式可能是这样的：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> first = someArray[<span class="number">0</span>];</span><br><span class="line"><span class="keyword">var</span> second = someArray[<span class="number">1</span>];</span><br><span class="line"><span class="keyword">var</span> third = someArray[<span class="number">2</span>];</span><br></pre></td></tr></table></figure>
+<p>但使用了解构赋值的话就可以简便地写成：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> [first, second, third] = someArray;</span><br></pre></td></tr></table></figure></p>
+<p>还有另外一些解构赋值的：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">    <span class="comment">//数组</span></span><br><span class="line">    <span class="keyword">var</span> [a,b,c] = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];<span class="comment">//按顺序</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//对象</span></span><br><span class="line">    <span class="keyword">var</span> &#123;a,b&#125; =&#123;a:<span class="number">1</span>,b:<span class="number">2</span>&#125;;</span><br><span class="line">    <span class="keyword">var</span> &#123;a,b&#125; =&#123;b:<span class="number">2</span>,a:<span class="number">1</span>&#125;;<span class="comment">//不用按顺序</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//函数</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> [a,b,c];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> [a1,b1,c1] = test();</span><br><span class="line"></span><br><span class="line"><span class="comment">//默认值</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">a=1,b=2</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> [a,b];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> [a1,b1] = test(a);<span class="comment">// b1 会是默认值 2</span></span><br></pre></td></tr></table></figure></p>
+<p>##4.对象方法<br>在 ECMAScript 中还新增了几个 object 对象方法，分别是：</p>
+<ul>
+<li><strong>Object.is()</strong>//比较严格相等,与 === 相似</li>
+</ul>
+<p>Object.is() 与 === 非常相似，不同点在于：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">+<span class="number">0</span> === <span class="number">-0</span> <span class="comment">//true</span></span><br><span class="line"><span class="literal">NaN</span> === <span class="literal">NaN</span> <span class="comment">//false</span></span><br><span class="line"><span class="built_in">Object</span>.is(+<span class="number">0</span>, <span class="number">-0</span>) <span class="comment">//false</span></span><br><span class="line"><span class="built_in">Object</span>.is(<span class="literal">NaN</span>, <span class="literal">NaN</span>) <span class="comment">//true</span></span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><strong>Object.assign(target,source1,source2)</strong>//复制对象可枚举属性</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Object</span>.assign(target,source1,source2);</span><br><span class="line"><span class="keyword">var</span> a = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line">a.name = <span class="string">''</span>;</span><br><span class="line">a.age = <span class="string">''</span>;</span><br><span class="line">a.sex</span><br><span class="line"><span class="built_in">Object</span>.defineProperty</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p><strong>Object.defineProperty</strong></p>
+</li>
+<li><p><strong>Object.setPrototypeof（a,null）</strong>//(裸对象)设置一个对象的prototype对象</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Person = &#123;</span><br><span class="line">  name: <span class="string">'张三'</span>,</span><br><span class="line">  birth,  <span class="comment">//birth: birth</span></span><br><span class="line">hello()&#123;<span class="built_in">console</span>.log(<span class="string">'hello'</span>);&#125; </span><br><span class="line"><span class="comment">// hello: function()&#123;console.log('hello');&#125;</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;a,b&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>##5.属性名表达式</p>
+<p>在 ECMAScript 6 之前是要用字符串来表示节点,现在可以用本来的属性名去调用它。例如：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> lastWord = <span class="string">'last word'</span>;</span><br><span class="line"><span class="keyword">var</span> a = &#123;</span><br><span class="line">    <span class="string">'first word'</span>: <span class="string">'hello'</span>,</span><br><span class="line">    [lastWord]: <span class="string">'world'</span></span><br><span class="line">&#125;;</span><br><span class="line">a[<span class="string">'last word'</span>] == a[lastWord];</span><br></pre></td></tr></table></figure></p>
+<p>##6. Set<br>想要得到没有重复成员的数组，可以用Set去去除重复的数组成员。</p>
+<p>例如：</p>
+<p>var a = new Set[1,2,3,5,3,4,3];</p>
+<p>在这一数组中重复的3会被去掉。</p>
+<p>##7.Map</p>
+<p>var a = {name:2,age:3};<br>var b = {a:4}; </p>
+<p>用对象或函数当做属性名</p>
+<p>##8.for-of 循环</p>
+<p>在 ECMAScript 还没出来之前，我们要拿到数组里面的数值时，有人会用 for-each 的方法：<br><img src="http://7xkopm.com1.z0.glb.clouddn.com/foreach.png" alt=""><br>得到的结果：<br><img src="http://7xkopm.com1.z0.glb.clouddn.com/foreachr.png" alt=""><br>虽然这一种方法能帮助我们得到数组里面的内容，但它有两个小缺点：</p>
+<ul>
+<li>不能用return语句返回到外层函数</li>
+<li>不能使用break语句中断循环</li>
+</ul>
+<p>或许有人会用另外一种 for-in 的方法：</p>
+<p><img src="http://7xkopm.com1.z0.glb.clouddn.com/index.png" alt=""></p>
+<p>但这样写返回的结果是它的索引值:</p>
+<p><img src="http://7xkopm.com1.z0.glb.clouddn.com/forinresult.png" alt=""></p>
+<p>要写成这样才能得到数组里面的值：</p>
+<p><img src="http://7xkopm.com1.z0.glb.clouddn.com/forin.png" alt=""></p>
+<p><img src="http://7xkopm.com1.z0.glb.clouddn.com/foreachr.png" alt=""></p>
+<p>但 for-in 是为普通对象设计的，你可以遍历得到字符串类型的键，因此不适用于数组遍历。<br>用 for-of 时：</p>
+<p><img src="http://7xkopm.com1.z0.glb.clouddn.com/forof.png" alt=""></p>
+<p>会直接得到结果为：</p>
+<p><img src="http://7xkopm.com1.z0.glb.clouddn.com/foreachr.png" alt=""></p>
+<p>而 for-of 出现之后不但解决了 for-each 的两个缺陷还解决了 for-in 的所有的缺点。</p>
+<p>##9.Generator<br>ES6生成器(可以做游戏对话框)</p>
+<p>##10.Promise</p>
+<p>主要是异步请求<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ajax</span><br><span class="line"></span><br><span class="line">$.ajax(&#123;</span><br><span class="line">    url:</span><br><span class="line">    method:</span><br><span class="line">    data:</span><br><span class="line">&#125;).success().error();</span><br></pre></td></tr></table></figure></p>
+<p>参考资料：<br>let 与 const 关键字：<br><a href="http://www.geekcome.com/content-10-2520-1.html" target="_blank" rel="external">http://www.geekcome.com/content-10-2520-1.html</a><br>Class 类：<br><a href="http://www.sitepoint.com/understanding-ecmascript-6-class-inheritance/" target="_blank" rel="external">http://www.sitepoint.com/understanding-ecmascript-6-class-inheritance/</a><br>ES 资料：<br><a href="http://www.infoq.com/cn/ecmascript/" target="_blank" rel="external">http://www.infoq.com/cn/ecmascript/</a></p>
+
+  </section>
+
+  
+  
+
+<section class="post-comments">
+
+    <div class="ds-thread" data-thread-key="2016/07/15/aboutes/"></div>
+
+    <script type="text/javascript">
+      var duoshuoQuery = {short_name:"letian"};
+      (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+        || document.getElementsByTagName('body')[0]).appendChild(ds);
+      })();
+    </script> 
+
+</section>
+
+
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright">&copy; 2014-2015. | 由<a href="https://hexo.io/">Hexo</a>强力驱动 | 主题<a href="https://github.com/someus/huno">Huno</a></span>
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript"> 
+        $(document).ready(function(){
+            MathJax.Hub.Config({ 
+                tex2jax: {inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']]} 
+            });
+        });
+    </script>
+
+
+    
+
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>
