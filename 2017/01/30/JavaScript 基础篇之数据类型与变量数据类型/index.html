@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      JavaScript 基础篇之数据类型与变量数据类型 | EyesiM&#39;s Blog 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="EyesiM">
+    
+    
+
+    <meta name="description" content="###一、数据类型1.Number注意点：
+
+浮点数数值计算会存在舍入误差问题 
+NaN 不等于自身，判断 NaN 的方法只有 isNaN()
+数值转换 Number() 可适用于任何的数据类型，其中若果变量的值是 undefined ，则转换过来的值为 NaN ,String 类型中数值不含有效数字包括其他进制，转换回来也是 NaN
+
+2.String
+
+特殊符号需要借助转义字符 ‘\’ 
+多">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript 基础篇之数据类型与变量数据类型 | EyesiM's Blog">
+<meta property="og:url" content="http://yoursite.com/2017/01/30/JavaScript 基础篇之数据类型与变量数据类型/index.html">
+<meta property="og:site_name" content="EyesiM's Blog">
+<meta property="og:description" content="###一、数据类型1.Number注意点：
+
+浮点数数值计算会存在舍入误差问题 
+NaN 不等于自身，判断 NaN 的方法只有 isNaN()
+数值转换 Number() 可适用于任何的数据类型，其中若果变量的值是 undefined ，则转换过来的值为 NaN ,String 类型中数值不含有效数字包括其他进制，转换回来也是 NaN
+
+2.String
+
+特殊符号需要借助转义字符 ‘\’ 
+多">
+<meta property="og:updated_time" content="2017-03-05T16:27:25.827Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript 基础篇之数据类型与变量数据类型 | EyesiM's Blog">
+<meta name="twitter:description" content="###一、数据类型1.Number注意点：
+
+浮点数数值计算会存在舍入误差问题 
+NaN 不等于自身，判断 NaN 的方法只有 isNaN()
+数值转换 Number() 可适用于任何的数据类型，其中若果变量的值是 undefined ，则转换过来的值为 NaN ,String 类型中数值不含有效数字包括其他进制，转换回来也是 NaN
+
+2.String
+
+特殊符号需要借助转义字符 ‘\’ 
+多">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/china-social-icon.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">EyesiM&#39;s Blog</a></h1>
+        <hr class="panel-cover__divider" />
+
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title="" class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title="" class="">关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title="" class="">归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+<nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+    
+      <!-- Github -->
+      <li class="navigation__item">
+        <a href="https://github.com/EyesiM" title="Huno on GitHub">
+          <i class='icon icon-social-github'></i>
+          <span class="label">GitHub</span>
+        </a>
+      </li>
+    
+
+    <!-- China social icon -->
+    <!--
+    
+      <li class="navigation__item">
+        <a href="" title="">
+          <i class='icon cs-icon-douban'></i>
+          <span class="label">Douban</span>
+        </a>
+      </li>
+
+      <li class="navigation__item">
+        <a href="" title="">
+          <i class='icon cs-icon-weibo'></i>
+          <span class="label">Weibo</span>
+        </a>
+      </li>
+
+    -->
+
+
+
+  </ul>
+</nav>
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">JavaScript 基础篇之数据类型与变量数据类型</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2017/01/30" class="post-meta__date date">2017/01/30</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+            <font class="categories">
+            &#8226; 分类:
+            <a class="categories-link" href="/categories/JavaScript/">JavaScript</a>
+            </font>
+          
+
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <hr>
+<p>###<strong>一、数据类型</strong><br><strong>1.Number</strong><br>注意点：</p>
+<ul>
+<li>浮点数数值计算会存在舍入误差问题 </li>
+<li>NaN 不等于自身，判断 NaN 的方法只有 isNaN()</li>
+<li>数值转换 Number() 可适用于任何的数据类型，其中若果变量的值是 undefined ，则转换过来的值为 NaN ,String 类型中数值不含有效数字包括其他进制，转换回来也是 NaN</li>
+</ul>
+<p><strong>2.String</strong></p>
+<ul>
+<li>特殊符号需要借助转义字符 ‘\’ </li>
+<li>多行字符串可以使用反引号 `` 来表示。</li>
+<li>要获取字符串某个指定位置的字符，使用类似Array的下标操作，索引号从0开始</li>
+<li>String.toUpperCase() 可以讲字符串转换成为大写，相反，String.toLowerCase() 可以将字符串转换成小写</li>
+<li>indexOf() 会返回字符串出现的第一个位置</li>
+<li>substring() 会返回检索区间的字符串</li>
+</ul>
+<p><strong>3.Boolean</strong><br>false 与 true，说到布尔值，得扯一下比较符 == 与 ===<br>== 比较，它会自动转换数据类型再比较，很多时候，会得到非常诡异的结果；<br>而 === 比较，它不会自动转换数据类型，如果数据类型不一致，返回 false，如果一致，再比较。<br>由于 JavaScript 这个设计缺陷，不要使用 == 比较，始终坚持使用 === 比较。<br>例如：<br><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">false</span> == <span class="number">0</span>; <span class="regexp">//true</span></span><br><span class="line"><span class="keyword">false</span> === <span class="number">0</span>;<span class="regexp">//false</span></span><br><span class="line"></span><br><span class="line"><span class="number">1</span> / <span class="number">3</span> === (<span class="number">1</span> - <span class="number">2</span> / <span class="number">3</span>);<span class="regexp">//</span> <span class="keyword">false</span> ,上面提及的浮点数数值计算存在舍入问题，浮点数的比较也会存在这种问题</span><br></pre></td></tr></table></figure></p>
+<p><strong>4.Undefined</strong><br>使用 var 声明了变量，但还没初始化它时，那么这个变量的值就是 undefined ，undefined 仅仅在判断函数参数是否传递的情况下有用<br><strong>5.Null</strong><br>Null 只有 null 一个值，表示一个空对象的指针，如果变量准备用于报存对象，最好还是初始化为 null。<br><strong>6.Object</strong><br>可以通过 new 来创建，另外 object 实例都含有以下的属性和方法：</p>
+<ul>
+<li>constructor 构造函数</li>
+<li>hasOwnProperty(propertyName) 检查当前实例中的属性是否属于自己所有的还是继承的</li>
+<li>isPrototypeof(object) 检查传入的对象是否是当前对象的原型</li>
+<li>propertyIsEnumerable(propertyName) 检查给定的属性能否用 for-in 来枚举</li>
+<li>toLocaleString() 返回对象的字符串表示，该字符串与执行环境的地区对应</li>
+<li>toString() 返回对象的字符串表示</li>
+<li>valueOf() 返回对象的字符串、数值或布尔值表示，通常与 toString() 返回值一致。</li>
+</ul>
+<p><strong>7.Symbol</strong><br>Symbol 类型是 ES6 新增的一种数据类型：</p>
+<ul>
+<li>凡是属性名属于 Symbol 类型，就都是独一无二的，可以保证不会与其他属性名产生冲突。</li>
+<li>Symbol 函数前不能使用 new 命令，否则会报错。这是因为生成的 Symbol 是一个原始类型的值，不是对象。</li>
+<li>Symbol 值不能与其他类型的值进行运算，会报错。但是，Symbol 值可以显式转为字符串。另外，Symbol 值也可以转为布尔值，但是不能转为数值。</li>
+<li>由于每一个 Symbol 值都是不相等的，这意味着 Symbol 值可以作为标识符，用于对象的属性名，就能保证不会出现同名的属性。</li>
+</ul>
+<p>###<strong>二、变量数据类型</strong><br>根据 ECMAScript ,JavaScript 变量可能包括两种不同数据类型的值：基本类型值与引用类型值，一般来说，上面我们提到的 Undefined、Null、Boolean、Number 和 String 归类为基本数据类型，而 Object 类型就是我们最常见的引用类型，那么，基本数据类型与引用类型有什么区别呢？<br><strong>1、动态的属性</strong><br>基本数据类型与引用类型在动态地添加属性上面具有不一样的表现，具体我们来见一下代码：<br>首先是基本数据类型：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> name = <span class="string">'Eyesim'</span>;</span><br><span class="line">name.age = <span class="number">22</span>;</span><br><span class="line">alert(name.age);<span class="comment">//undefined</span></span><br></pre></td></tr></table></figure></p>
+<p>然后再看引用数据类型：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> person  = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line">person.name = <span class="string">'Eyesim'</span>;</span><br><span class="line">alert(person.name);<span class="comment">//EyesiM</span></span><br></pre></td></tr></table></figure></p>
+<p>由上面的两个例子可见，我们给字符串类型的 name 变量定义并赋值了一个 age 为 22 的属性，但是在下一行我们去访问这个 age 的属性的时候，发现这个属性不见了，但当我们给 person 对象添加了一个 name 为 Eyesim 的属性的时候，并在下一行去访问的时候是可以访问到 name 属性的，这说明了我们只能给引用类型值动态添加属性，以便将来使用。</p>
+<p><strong>2、复制变量值</strong><br>复制变量值这一点在实际的开发中还是得注意，对于基本类型的变量，我们从一个变量向另一个变量复制基本类型值时，会在变量对象上创建一个新值，然后把该值复制到给新变量所分配的位置上面去，但使引用类型值并不是这样的，当引用类型的变量被另一个变量复制的时候，一方面也会将储存在变量对象中的值给复制到新变量所分配到的空间去，但不同的是什么呢？这个被复制的值实际上是一个指针，而这个指针指向存储在对中的一个对象，所以这个时候，新旧两个变量都是指向同一个地址，实际上引用的是同一个对象，因此改变其中任何一个变量，另一个变量也会跟着变化。下面我们来看一下具体是怎么样的：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//基本类型值的复制</span></span><br><span class="line"><span class="keyword">var</span> num1 = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">var</span> num2 = num1;</span><br><span class="line">alert(num1);<span class="comment">//2</span></span><br><span class="line">alert(num2);<span class="comment">//2</span></span><br><span class="line">num2 = <span class="number">3</span>;</span><br><span class="line">alert(num1);<span class="comment">//2</span></span><br><span class="line">alert(num2);<span class="comment">//3</span></span><br></pre></td></tr></table></figure></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> o1 = &#123;</span><br><span class="line">    name:<span class="string">'Eyesim'</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> o2 = o1;</span><br><span class="line">o2.job = <span class="string">'developer'</span>;</span><br><span class="line">alert(o2.job);<span class="comment">//developer</span></span><br><span class="line">alert(o1.job);<span class="comment">//developer</span></span><br></pre></td></tr></table></figure>
+<p>根据例子，基本类型值的复制，变量间的操作都是独立的，互不影响的，而引用类型值的变量复制，由于变量指向同一个对象，所以任何一个变量的操作都对其他变量造成影响。</p>
+<p><strong>3、传递参数</strong><br>在 ECMAScript 中，所有函数的参数都是按值传递的，也就说，把函数外部的值复制给函数内部的参数，就和上面所说的变量的复制一样。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//基本数据类型的参数传递</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">addTen</span>(<span class="params">num</span>) </span>&#123;</span><br><span class="line">    num += <span class="number">10</span>;</span><br><span class="line">    <span class="keyword">return</span> num;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> count = <span class="number">20</span>;</span><br><span class="line"><span class="keyword">var</span> result = addTen(count);</span><br><span class="line">alert(result);<span class="comment">//30</span></span><br><span class="line">alert(count);<span class="comment">//20</span></span><br></pre></td></tr></table></figure></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">setName</span>(<span class="params">obj</span>) </span>&#123;</span><br><span class="line">    obj.name = <span class="string">"Eyesim"</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> person = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line">setName(person);</span><br><span class="line">alert(person.name);</span><br></pre></td></tr></table></figure>
+<p>这个结果与上面所说的变量复制是非常相似的,这是因为在向参数传递基本类型的值时，被传递的值会被复制给一个局部变量（参数），向参数传递引用类型的值时，会把这个值在内存中的地址给复制给局部变量，因此这个局部变量的变化会影响函数的外部的变量，所以说实际上，在传递参数上，引用类型与基本数据类型都是按值传递的。</p>
+<p><strong>4、检测类型</strong><br>要检测一个变量是不是基本数据类型，是怎么检测的呢？JavaScript 给我们提供了 typeof 操作符，它可以确定变量是具体哪一种基本数据类型，但 typeof 操作符并不能判断引用类型是什么类型的对象，但是 ECMAScript 给我们提供了 intanceof 操作符来判断引用类型。另外，根据规定，所用引用类型的值都是 Object 的实例，因此在检测一个引用类型值和 Object 构造函数时， instanceof 操作符始终会返回 true，当然 instanceof 操作符在判断基本数据类型时总是返回 false,因为基本数据类型不是对象。</p>
+
+  </section>
+
+  
+  
+
+<section class="post-comments">
+
+    <div class="ds-thread" data-thread-key="2017/01/30/JavaScript 基础篇之数据类型与变量数据类型/"></div>
+
+    <script type="text/javascript">
+      var duoshuoQuery = {short_name:"letian"};
+      (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+        || document.getElementsByTagName('body')[0]).appendChild(ds);
+      })();
+    </script> 
+
+</section>
+
+
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright">&copy; 2014-2015. | 由<a href="https://hexo.io/">Hexo</a>强力驱动 | 主题<a href="https://github.com/someus/huno">Huno</a></span>
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript"> 
+        $(document).ready(function(){
+            MathJax.Hub.Config({ 
+                tex2jax: {inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']]} 
+            });
+        });
+    </script>
+
+
+    
+
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>

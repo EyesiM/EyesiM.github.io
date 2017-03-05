@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      ﻿重流与重绘 | EyesiM&#39;s Blog 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="EyesiM">
+    
+    
+
+    <meta name="description" content="###1.浏览器的内核在过去，JS 还没充分地利用起来的时候，浏览器的内核包含了 JS 引擎 和渲染引擎，而现在浏览器内核只包含了渲染引擎，JS 引擎已经独立出来了（例如 V8）。所以现在我们所说的浏览器引擎一般是指渲染引擎。现在比较的流行的引擎有：
+
+
+
+内核
+浏览器
+
+
+
+
+Trident
+IE 系列
+
+
+Gecko
+firefox
+
+
+Webkit
+Safari,Android
+
+
+bli">
+<meta property="og:type" content="article">
+<meta property="og:title" content="﻿重流与重绘 | EyesiM's Blog">
+<meta property="og:url" content="http://yoursite.com/2016/11/22/重流与重绘/index.html">
+<meta property="og:site_name" content="EyesiM's Blog">
+<meta property="og:description" content="###1.浏览器的内核在过去，JS 还没充分地利用起来的时候，浏览器的内核包含了 JS 引擎 和渲染引擎，而现在浏览器内核只包含了渲染引擎，JS 引擎已经独立出来了（例如 V8）。所以现在我们所说的浏览器引擎一般是指渲染引擎。现在比较的流行的引擎有：
+
+
+
+内核
+浏览器
+
+
+
+
+Trident
+IE 系列
+
+
+Gecko
+firefox
+
+
+Webkit
+Safari,Android
+
+
+bli">
+<meta property="og:image" content="http://7xkopm.com1.z0.glb.clouddn.com/browser.png">
+<meta property="og:image" content="http://7xkopm.com1.z0.glb.clouddn.com/browser.png">
+<meta property="og:updated_time" content="2017-03-05T16:34:06.791Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="﻿重流与重绘 | EyesiM's Blog">
+<meta name="twitter:description" content="###1.浏览器的内核在过去，JS 还没充分地利用起来的时候，浏览器的内核包含了 JS 引擎 和渲染引擎，而现在浏览器内核只包含了渲染引擎，JS 引擎已经独立出来了（例如 V8）。所以现在我们所说的浏览器引擎一般是指渲染引擎。现在比较的流行的引擎有：
+
+
+
+内核
+浏览器
+
+
+
+
+Trident
+IE 系列
+
+
+Gecko
+firefox
+
+
+Webkit
+Safari,Android
+
+
+bli">
+<meta name="twitter:image" content="http://7xkopm.com1.z0.glb.clouddn.com/browser.png">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/china-social-icon.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">EyesiM&#39;s Blog</a></h1>
+        <hr class="panel-cover__divider" />
+
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title="" class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title="" class="">关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title="" class="">归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+<nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+    
+      <!-- Github -->
+      <li class="navigation__item">
+        <a href="https://github.com/EyesiM" title="Huno on GitHub">
+          <i class='icon icon-social-github'></i>
+          <span class="label">GitHub</span>
+        </a>
+      </li>
+    
+
+    <!-- China social icon -->
+    <!--
+    
+      <li class="navigation__item">
+        <a href="" title="">
+          <i class='icon cs-icon-douban'></i>
+          <span class="label">Douban</span>
+        </a>
+      </li>
+
+      <li class="navigation__item">
+        <a href="" title="">
+          <i class='icon cs-icon-weibo'></i>
+          <span class="label">Weibo</span>
+        </a>
+      </li>
+
+    -->
+
+
+
+  </ul>
+</nav>
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">﻿重流与重绘</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2016/11/22" class="post-meta__date date">2016/11/22</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+            <font class="categories">
+            &#8226; 分类:
+            <a class="categories-link" href="/categories/浏览器渲染/">浏览器渲染</a>
+            </font>
+          
+
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <hr>
+<p>###1.浏览器的内核<br>在过去，JS 还没充分地利用起来的时候，浏览器的内核包含了 JS 引擎 和渲染引擎，而现在浏览器内核只包含了渲染引擎，JS 引擎已经独立出来了（例如 V8）。所以现在我们所说的浏览器引擎一般是指渲染引擎。<br>现在比较的流行的引擎有：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">内核</th>
+<th style="text-align:center">浏览器</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Trident</td>
+<td style="text-align:center">IE 系列</td>
+</tr>
+<tr>
+<td style="text-align:center">Gecko</td>
+<td style="text-align:center">firefox</td>
+</tr>
+<tr>
+<td style="text-align:center">Webkit</td>
+<td style="text-align:center">Safari,Android</td>
+</tr>
+<tr>
+<td style="text-align:center">blink</td>
+<td style="text-align:center">Chrome,Opera</td>
+</tr>
+</tbody>
+</table>
+<p>一般浏览器内核工作的流程如下图所示：<br>当浏览器就收到你的HTML文件和CSS文件时，触发过程是这样的.<br><img src="http://7xkopm.com1.z0.glb.clouddn.com/browser.png" alt="内核运作"></p>
+<ul>
+<li>首先Parse对文件进行解析</li>
+<li>然后将对应的HTML生成为DOM</li>
+<li>CSS解析为CSS Object Model.</li>
+<li>然后两者合并进行render</li>
+<li>最后绘制到页面上</li>
+</ul>
+<p>###2. JS引擎怎么工作的？<br> 实际上，JS引擎要比浏览器引擎高一级。</p>
+<ol>
+<li>获得文件时，浏览器开始解析文档</li>
+<li>解析到script标签时，则会暂停解析，将控制权给JS引擎</li>
+<li>如果script引用的是外部资源，则会发起请求进行加载，然后执行</li>
+<li>执行完毕后再将控制权还给渲染引擎，然后继续解析。</li>
+</ol>
+<p>但，就是由于浏览器会将控制权交给JS引擎，所以如果你的加载的资源过长，网页就死在哪里，一动也不动，直到你加载好为止。所以，通用的做法就是将js文件放到body底部，保证DOM树的完整渲染。</p>
+<p>但是，实事情况并不是这么简单，源于JS优化加载这一块，也是有很多优化的点的。</p>
+<p>另外，我们还需要掌握一个小tip. 浏览器最多能同时下载几个文件呢？</p>
+<p>答案是，不确定，通常来说是6个，而IE11则是13个。这里的文件，不仅仅指js和css而是指，一切通过请求发送的，都算一份文件。所以，通常的做法就是，合并脚本，CDN优化，资源分布防止。</p>
+<p>###3.什么是重流，重绘？<br>通常页面在加载你的js,css,img等文件时，引擎会对文件加以解析，最终生成两颗树，渲染树和DOM树. DOM树中的需要显示节点在渲染树中都会存在,但是display:none的则不会存在。 可以说，渲染树是指定DOM显示的真实节点，而DOM树则是页面显示的HTML结构。 在渲染树中，常常将节点成为帧或者盒子。这里，也可以理解为渲染树，其实就是css文件指定节点的样式表。</p>
+<p>当渲染树和DOM树都已经完成的时候，则开始将页面显示到桌面上了。</p>
+<p>这时候，如果你改变页面的DOM结构，浏览器则会重新改动涉及到的DOM. 此时你的渲染树和DOM树就会发生改变。</p>
+<p>浏览器会重新计算出渲染树这一过程叫做重流(重排)。</p>
+<p>将更新后的结构重新渲染到页面这一过程叫做重绘。</p>
+<p>整个流程就是这个图<br><img src="http://7xkopm.com1.z0.glb.clouddn.com/browser.png" alt="内核运作"></p>
+<p>DOM 操作非常之慢。<br>为什么呢？</p>
+<p>重绘是一个耗时的过程，然而重流是一个更耗时的过程，我们无法确定重流一定是自上而下或是自下而上进行的，甚至一次重流会牵涉到整个文档布局的重新计算。</p>
+<p>但是重流是肯定无法避免的，所以我们主要是要最小化重流的次数，reflow  这个操作是用来计算文档中元素的位置和大小，是渲染前重要的一步。在HTML第一次被加载的时候，会有一次 reflow 之外，js脚本的执行和样式的改变同样会导致浏览器执行 reflow ，这也是本文的主要要讨论的内容。</p>
+<p>一般情况下，浏览器的 reflow  是 lazy 的，也就是说：在 js 脚本执行时，是不会去更新 DOM 的，任何对 DOM 的修改都会被暂存在一个队列中，在当前 js 的执行上下文完成执行后，会根据这个队列中的修改，进行一次 reflow。</p>
+<p>然而有时希望在 js 代码中立刻获取最新的 DOM 节点信息，浏览器就不得不提前执行 reflow ，这是导致 DOM 性能问题的主因。</p>
+<p>如下的操作会打破常规，并触发浏览器执行 reflow：</p>
+<ol>
+<li>通过 js 获取需要计算的 DOM 属性</li>
+<li>添加或删除 DOM 元素</li>
+<li>resize 浏览器窗口大小</li>
+<li>改变字体</li>
+<li>css 伪类的激活，比如 :hover</li>
+<li>通过 js 修改 DOM 元素样式且该样式涉及到尺寸的改变</li>
+</ol>
+<p>React 引入了 虚拟 DOM 的概念：开发者操作虚拟 DOM，React 在必要的时候将它们渲染到真正的 DOM 上</p>
+
+  </section>
+
+  
+  
+
+<section class="post-comments">
+
+    <div class="ds-thread" data-thread-key="2016/11/22/重流与重绘/"></div>
+
+    <script type="text/javascript">
+      var duoshuoQuery = {short_name:"letian"};
+      (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+        || document.getElementsByTagName('body')[0]).appendChild(ds);
+      })();
+    </script> 
+
+</section>
+
+
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright">&copy; 2014-2015. | 由<a href="https://hexo.io/">Hexo</a>强力驱动 | 主题<a href="https://github.com/someus/huno">Huno</a></span>
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript"> 
+        $(document).ready(function(){
+            MathJax.Hub.Config({ 
+                tex2jax: {inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']]} 
+            });
+        });
+    </script>
+
+
+    
+
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>

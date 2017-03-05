@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      JavaScript 学习笔记之对象的创建 | EyesiM&#39;s Blog 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="EyesiM">
+    
+    
+
+    <meta name="description" content="1、Object 构建函数在 JavaScript 中创建对象最简单的方法就是创建一个 object 的实例，然后为它添加所需的属性和方法。12345678//Object 构建函数方法var person  = new Object();person.name = &apos;Eyesim&apos;;person.age  = 22;person.job  = &apos;developer&apos;;person.sayNam">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript 学习笔记之对象的创建 | EyesiM's Blog">
+<meta property="og:url" content="http://yoursite.com/2017/02/05/JavaScript 学习笔记之对象的创建 (1)/index.html">
+<meta property="og:site_name" content="EyesiM's Blog">
+<meta property="og:description" content="1、Object 构建函数在 JavaScript 中创建对象最简单的方法就是创建一个 object 的实例，然后为它添加所需的属性和方法。12345678//Object 构建函数方法var person  = new Object();person.name = &apos;Eyesim&apos;;person.age  = 22;person.job  = &apos;developer&apos;;person.sayNam">
+<meta property="og:updated_time" content="2017-03-05T16:28:34.951Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript 学习笔记之对象的创建 | EyesiM's Blog">
+<meta name="twitter:description" content="1、Object 构建函数在 JavaScript 中创建对象最简单的方法就是创建一个 object 的实例，然后为它添加所需的属性和方法。12345678//Object 构建函数方法var person  = new Object();person.name = &apos;Eyesim&apos;;person.age  = 22;person.job  = &apos;developer&apos;;person.sayNam">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/china-social-icon.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">EyesiM&#39;s Blog</a></h1>
+        <hr class="panel-cover__divider" />
+
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title="" class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title="" class="">关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title="" class="">归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+<nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+    
+      <!-- Github -->
+      <li class="navigation__item">
+        <a href="https://github.com/EyesiM" title="Huno on GitHub">
+          <i class='icon icon-social-github'></i>
+          <span class="label">GitHub</span>
+        </a>
+      </li>
+    
+
+    <!-- China social icon -->
+    <!--
+    
+      <li class="navigation__item">
+        <a href="" title="">
+          <i class='icon cs-icon-douban'></i>
+          <span class="label">Douban</span>
+        </a>
+      </li>
+
+      <li class="navigation__item">
+        <a href="" title="">
+          <i class='icon cs-icon-weibo'></i>
+          <span class="label">Weibo</span>
+        </a>
+      </li>
+
+    -->
+
+
+
+  </ul>
+</nav>
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">JavaScript 学习笔记之对象的创建</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2017/02/05" class="post-meta__date date">2017/02/05</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+            <font class="categories">
+            &#8226; 分类:
+            <a class="categories-link" href="/categories/JavaScript/">JavaScript</a>
+            </font>
+          
+
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <hr>
+<h4 id="1、Object-构建函数"><a href="#1、Object-构建函数" class="headerlink" title="1、Object 构建函数"></a><strong>1、Object 构建函数</strong></h4><p>在 JavaScript 中创建对象最简单的方法就是创建一个 object 的实例，然后为它添加所需的属性和方法。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Object 构建函数方法</span></span><br><span class="line"><span class="keyword">var</span> person  = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line">person.name = <span class="string">'Eyesim'</span>;</span><br><span class="line">person.age  = <span class="number">22</span>;</span><br><span class="line">person.job  = <span class="string">'developer'</span>;</span><br><span class="line">person.sayName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    alert(<span class="keyword">this</span>.name);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>这种 <strong>Object 构建函数</strong>的方法在早期比较流行，后来<strong>对象字面量</strong>的方法成为创建字面量的首选。</p>
+<h4 id="2、对象字面量"><a href="#2、对象字面量" class="headerlink" title="2、对象字面量"></a><strong>2、对象字面量</strong></h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//对象字面量</span></span><br><span class="line"><span class="keyword">var</span> person = &#123;</span><br><span class="line">    name:<span class="string">'Eyesim'</span>,</span><br><span class="line">    age:<span class="number">22</span>,</span><br><span class="line">    job:<span class="string">'developer'</span>,</span><br><span class="line">    sayName: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        alert(<span class="keyword">this</span>.name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这两个方法创建单个对象还是挺方便的，但是它们在用于创建多个类似的对象时就会显得特别繁琐，只能一个又一个地重复去创建，而且类似的对象之间也没法看出有什么联系，此时就出现了以下几种常见的创建对象的模式：<br>首先是在上面的模式上改进的模式，可以理解为<strong>工厂模式</strong></p>
+<h4 id="3、工厂模式："><a href="#3、工厂模式：" class="headerlink" title="3、工厂模式："></a><strong>3、工厂模式</strong>：</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//工厂模式</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span> (<span class="params">name,age,job</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> p = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line">    p.name  = name;</span><br><span class="line">    p.age   = age;</span><br><span class="line">    p.job   = job;</span><br><span class="line">    p.sayName    = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        alert(<span class="keyword">this</span>.name);</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">return</span> p;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> eyesim = Person (<span class="string">'Eyesim'</span>,<span class="number">22</span>,<span class="string">'developer'</span>);</span><br><span class="line"><span class="keyword">var</span> gordon = Person (<span class="string">'Gordon'</span>,<span class="number">22</span>,<span class="string">'engineer'</span>);</span><br><span class="line">eyesim.constructor === Person;<span class="comment">//false</span></span><br><span class="line">gordon.constructor === Person;<span class="comment">//false</span></span><br><span class="line">eyesim.constructor === <span class="built_in">Object</span>;<span class="comment">//true</span></span><br><span class="line">gordon.constructor === <span class="built_in">Object</span>;<span class="comment">//true</span></span><br><span class="line">eyesim <span class="keyword">instanceof</span> <span class="built_in">Object</span>; <span class="comment">//true</span></span><br><span class="line">eyesim <span class="keyword">instanceof</span> Person; <span class="comment">//false</span></span><br></pre></td></tr></table></figure>
+<p>利用工厂模式的方法可以成功创建多个类似的对象，但是这种方法有个缺陷是，eyesim.constructor 返回的是根部的 Object,用 instanceof 操作符去判断实例类型的时候 Person 的判断也是错的，也就是说这种模式无法知道到底是创建的这些对象是谁的实例。于是就出现了另一种方法——<strong>构造函数模式</strong>.</p>
+<h4 id="4、构造函数模式："><a href="#4、构造函数模式：" class="headerlink" title="4、构造函数模式："></a><strong>4、构造函数模式</strong>：</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//构造函数模式</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name,age,job</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name  = name;</span><br><span class="line">    <span class="keyword">this</span>.age   = age;</span><br><span class="line">    <span class="keyword">this</span>.job   = job;</span><br><span class="line">    <span class="keyword">this</span>.sayName    = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        alert(<span class="keyword">this</span>.name);</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> eyesim = <span class="keyword">new</span> Person (<span class="string">'Eyesim'</span>,<span class="number">22</span>,<span class="string">'developer'</span>);</span><br><span class="line"><span class="keyword">var</span> gordon = <span class="keyword">new</span> Person (<span class="string">'Gordon'</span>,<span class="number">22</span>,<span class="string">'engineer'</span>);</span><br><span class="line">eyesim.constructor === Person;<span class="comment">//true</span></span><br><span class="line">gordon.constructor === Person;<span class="comment">//true</span></span><br><span class="line">eyesim.constructor === <span class="built_in">Object</span>;<span class="comment">//false</span></span><br><span class="line">gordon.constructor === <span class="built_in">Object</span>;<span class="comment">//false</span></span><br><span class="line">eyesim <span class="keyword">instanceof</span> <span class="built_in">Object</span>; <span class="comment">//true</span></span><br><span class="line">eyesim <span class="keyword">instanceof</span> Person; <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+<p>这种方法解决了工厂模式下，实例与构造函数间的联系的问题，但是这种方法并不是很完美的，因为他在创建好的实例里面会重新定义方法:<br><figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eyesim.<span class="attr">sayName</span> === gordon.sayName;//<span class="literal">false</span></span><br></pre></td></tr></table></figure></p>
+<p>这点在多个实例上就会显得特别占内存，那么对于那些实例间共有的方法与属性，可以怎么解决呢？我们可以对这个方法改进一下<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//构造函数模式的改进</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name,age,job</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name  = name;</span><br><span class="line">    <span class="keyword">this</span>.age   = age;</span><br><span class="line">    <span class="keyword">this</span>.job   = job;</span><br><span class="line">    <span class="keyword">this</span>.sayName = sayName; </span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayName</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    alert(<span class="keyword">this</span>.name);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> eyesim = <span class="keyword">new</span> Person (<span class="string">'Eyesim'</span>,<span class="number">22</span>,<span class="string">'developer'</span>);</span><br><span class="line"><span class="keyword">var</span> gordon = <span class="keyword">new</span> Person (<span class="string">'Gordon'</span>,<span class="number">22</span>,<span class="string">'engineer'</span>);</span><br><span class="line">eyesim.constructor === Person;<span class="comment">//true</span></span><br><span class="line">gordon.constructor === Person;<span class="comment">//true</span></span><br><span class="line">eyesim.constructor === <span class="built_in">Object</span>;<span class="comment">//false</span></span><br><span class="line">gordon.constructor === <span class="built_in">Object</span>;<span class="comment">//false</span></span><br><span class="line">eyesim <span class="keyword">instanceof</span> <span class="built_in">Object</span>; <span class="comment">//true</span></span><br><span class="line">eyesim <span class="keyword">instanceof</span> Person; <span class="comment">//true</span></span><br><span class="line">eyesim.sayName === gordon.sayName;<span class="comment">//true</span></span><br></pre></td></tr></table></figure></p>
+<p>这种方法通过把函数的定义转移到构造函数的外面来解决，此时内部的 sayName 就被设置为全局的 sayName 函数，这样一来 sayName 包含的是一个指向函数的指针，因此 eyesim 与 gordon 就共享了在全局域中所定义的同一个 sayName() 函数，这样就解决了让两个函数做同一件事的问题，但是呢，这个会存在什么问题？</p>
+<pre><code>1.在全局域中定义的函数只能被某个对象调用这让全局作用域有点名不其实
+2.如果对象需要很多种共有的方法的话，这是不是得在全局域定义不同的函数？
+</code></pre><p>那么，还有什么创建对象的模式可以解决这些问题呢？幸好我们还有<strong>原型模式</strong>。</p>
+<h4 id="5、原型模式："><a href="#5、原型模式：" class="headerlink" title="5、原型模式："></a><strong>5、原型模式</strong>：</h4><p>其实我们创建的每一个函数都有一个 prototype （原型）的属性，这个属性是一个指针，指向一个对象，这个对象的用途就是可以包含由特定类型的所有实例共享的属性和方法，也就是说 prototype 就是通过构建函数创建的那个对象实例的原型对象，使用这个原型对象的好处就是可以让所有的对象实例共享它所含有的属性和方法，利用这个属性，我们大致就可以解决上面构造函数模式遇到的共享的问题。首先我们来创建这个原型对象：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span> (<span class="params">name,age,job</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">this</span>.age  = age;</span><br><span class="line">    <span class="keyword">this</span>.job  = job;</span><br><span class="line">&#125;;</span><br><span class="line">Person.prototype.sayName = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">    alert(<span class="keyword">this</span>.name);</span><br><span class="line">&#125;;</span><br><span class="line">Person.prototype.constructor === <span class="built_in">Object</span>;<span class="comment">//true</span></span><br><span class="line">Person.prototype.constructor === Person;<span class="comment">//true</span></span><br></pre></td></tr></table></figure></p>
+<p>我们也可以用字面量方法创建：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span> (<span class="params">name,age,job</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">this</span>.age  = age;</span><br><span class="line">    <span class="keyword">this</span>.job  = job;</span><br><span class="line">&#125;;</span><br><span class="line">Person.prototype = &#123;</span><br><span class="line">    sayName: <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">        alert(<span class="keyword">this</span>.name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> eyesim = <span class="keyword">new</span> Person (<span class="string">'Eyesim'</span>,<span class="number">22</span>,<span class="string">'developer'</span>);</span><br><span class="line"><span class="keyword">var</span> gordon = <span class="keyword">new</span> Person (<span class="string">'Gordon'</span>,<span class="number">22</span>,<span class="string">'engineer'</span>);</span><br></pre></td></tr></table></figure></p>
+<p>字面量重写原型对象的方法虽然能够满足共享方法与属性的问题，但是存在这一个很大的问题，是什么呢？<br><figure class="highlight delphi"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Person.prototype.<span class="keyword">constructor</span> === <span class="keyword">Object</span>;<span class="comment">//true</span></span><br><span class="line">Person.prototype.<span class="keyword">constructor</span> === Person;<span class="comment">//false</span></span><br></pre></td></tr></table></figure></p>
+<p>这是怎么回事呢，原来原型对象在一开始创建的时候会默认有一个 constructor 的属性指向构造函数 Person ,但是在用字面量方式创建的时候会将原型对象重写，反而导致了原型对象失去了与构造函数的联系，这时候我们可以在字面量创建对象的时候可以通过给原型对象添加一个 constructor 属性修补这一个关系的桥梁：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span> (<span class="params">name,age,job</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">this</span>.age  = age;</span><br><span class="line">    <span class="keyword">this</span>.job  = job;</span><br><span class="line">&#125;;</span><br><span class="line">Person.prototype = &#123;</span><br><span class="line">    <span class="keyword">constructor</span>: Person,</span><br><span class="line">    sayName: function ()&#123;</span><br><span class="line">        alert(<span class="keyword">this</span>.name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> eyesim = <span class="keyword">new</span> Person (<span class="string">'Eyesim'</span>,<span class="number">22</span>,<span class="string">'developer'</span>);</span><br><span class="line"><span class="keyword">var</span> gordon = <span class="keyword">new</span> Person (<span class="string">'Gordon'</span>,<span class="number">22</span>,<span class="string">'engineer'</span>);</span><br></pre></td></tr></table></figure></p>
+<p>说完这一点要注意的，我们继续说原型模式，原型模式是不是完美的呢？当然不是，再美好的东西都是存在缺点的，那原型模式存在什么问题呢？下面我一点点来说。<br>根据 JavaScript 的基本概念，ECMAScript 变量可能包含两种不同类型的值：基本类型值与引用类型值，在将一个值赋值给变量的时候，解析器必须确定这个值是基本数据类型值还是引用类型值，那么这两种类型值有什么不同呢？在这里，我们最主要说的是，基本数据类型值是按值访问的，而引用类型值是按引用访问的，也就是说，当赋值给原型对象时，如果属性类型是基本数据类型的话还好，赋值是什么，表现就是什么，不同的实例可以有不同的值，但是如果是引用类型的话，会发生什么事情呢？后面赋值的会覆盖掉前面的赋值，为什么呢？因为对于引用类型来说，当保存着对象的某个变量时，操作的是对象的引用，但在为对象添加属性时，操作的是实际的对象。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span> (<span class="params">name,age,job</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">this</span>.age  = age;</span><br><span class="line">    <span class="keyword">this</span>.job  = job;</span><br><span class="line">&#125;;</span><br><span class="line">Person.prototype = &#123;</span><br><span class="line">    <span class="keyword">constructor</span>: Person,</span><br><span class="line">    sex:'female',</span><br><span class="line">    sayName: function ()&#123;</span><br><span class="line">        alert(<span class="keyword">this</span>.name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> eyesim = <span class="keyword">new</span> Person (<span class="string">'Eyesim'</span>,<span class="number">22</span>,<span class="string">'developer'</span>);</span><br><span class="line"><span class="keyword">var</span> gordon = <span class="keyword">new</span> Person (<span class="string">'Gordon'</span>,<span class="number">22</span>,<span class="string">'engineer'</span>);</span><br><span class="line">gordon.sex = <span class="string">'male'</span>;</span><br><span class="line">gordon.sex === <span class="string">'male'</span>;<span class="comment">//true</span></span><br><span class="line">eyesim.sex === <span class="string">'female'</span>;<span class="comment">//true</span></span><br><span class="line">gordon.constructor.prototype.sex === <span class="string">'female'</span>;<span class="comment">//true</span></span><br><span class="line">eyesim.constructor.prototype.sex === <span class="string">'female'</span>;<span class="comment">//true</span></span><br></pre></td></tr></table></figure></p>
+<p>在这里面，sex 的数据类型为基本数据类型，所以修改 gordon.sex 的时候并不会影响到原型的 sex 的值，也不会影响到其他实例的属性值<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">gordon.palce[<span class="number">0</span>] = <span class="string">'Beijing'</span>;</span><br><span class="line">gordon.palce[<span class="number">0</span>] === <span class="string">'Beijing'</span>;<span class="comment">//true</span></span><br><span class="line">eyesim.palce[<span class="number">0</span>] === <span class="string">'Guangzhou'</span>;<span class="comment">//false</span></span><br><span class="line">eyesim.palce[<span class="number">0</span>] === <span class="string">'Beijing'</span>;<span class="comment">//true</span></span><br><span class="line">gordon.constructor.prototype.palce[<span class="number">0</span>] === <span class="string">'Guangzhou'</span>;<span class="comment">//false</span></span><br><span class="line">eyesim.constructor.prototype.palce[<span class="number">0</span>] === <span class="string">'Guangzhou'</span>;<span class="comment">//false </span></span><br><span class="line">gordon.constructor.prototype.palce[<span class="number">0</span>] === <span class="string">'Beijing'</span>;<span class="comment">//true</span></span><br><span class="line">eyesim.constructor.prototype.palce[<span class="number">0</span>] === <span class="string">'Beijing'</span>;<span class="comment">//true</span></span><br></pre></td></tr></table></figure></p>
+<p>这里的 palce 为引用类型值，当实例修改了这种引用类型的属性时，原型对象里面的属性值就被重写了，连其他实例也跟着变，这是因为存储在原型对象中的是该引用类型变量的地址，于是在所有实例对象中该属性的地址都指向同一个数组，所以当任何一个实例对象对该引用类型的变量进行修改，所有引用了这一变量的值都跟着变了，这就是原型对象里面不好的一点。</p>
+<h3 id="6、构造函数与原型混成的模式"><a href="#6、构造函数与原型混成的模式" class="headerlink" title="6、构造函数与原型混成的模式"></a><strong>6、构造函数与原型混成的模式</strong></h3><p>为了避免以上这几种模式的各种缺点，我们可以使用多种模式组合的方式，其中构造函数模式与原型模式的组合最常见了,话不多说，上代码：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name,age,job</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">this</span>.age  = age;</span><br><span class="line">    <span class="keyword">this</span>.job  = job;</span><br><span class="line">    <span class="keyword">this</span>.place = [<span class="string">'Guangzhou'</span>,<span class="string">'Shenzhen'</span>];</span><br><span class="line">&#125;;</span><br><span class="line">Person.prototype = &#123;</span><br><span class="line">    <span class="keyword">constructor</span>:Person,</span><br><span class="line">    sayName: function()&#123;</span><br><span class="line">        alert(<span class="keyword">this</span>.name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> eyesim = <span class="keyword">new</span> Person (<span class="string">'Eyesim'</span>,<span class="number">22</span>,<span class="string">'developer'</span>);</span><br><span class="line"><span class="keyword">var</span> gordon = <span class="keyword">new</span> Person (<span class="string">'Gordon'</span>,<span class="number">22</span>,<span class="string">'engineer'</span>);</span><br><span class="line">eyesim.place.push(<span class="string">'Beijing'</span>);</span><br><span class="line">eyesim.place[<span class="number">2</span>]===<span class="string">'Beijing'</span>;<span class="comment">//true</span></span><br><span class="line">gordon.place[<span class="number">2</span>]===<span class="string">'Beijing'</span>;<span class="comment">//false</span></span><br></pre></td></tr></table></figure></p>
+<p>这种方法实例属性都是在构造函数里面定义，而由所有实例共享的属性 consturctor 与方法则是在原型对象中定义，而修改了 eyesim.place 以后并不影响其他实例对象的值，因为它们分别引用的是不同的数组。目前这种构造函数与原型混成的模式，是在 ECMAScript 中使用得最广泛、认同度最高的一种创建自定义类型的方法，可以说，这是用来定义引用类型的一种默认模式。</p>
+<h3 id="7、动态原型模式"><a href="#7、动态原型模式" class="headerlink" title="7、动态原型模式"></a><strong>7、动态原型模式</strong></h3><p>如果说，对独立的构造函数和原型看不惯的话，可以试一下动态原型模型，它把所有的信息都封装在了构造函数中，而通过在构造函数中初始化原型（必要才这么做），又保持了同时使用构造函数和原型的优点，我们可以根据检查某个应该存在的方法是否有效来决定是否需要初始化原型，上代码：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span> (<span class="params">name,age,job</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">this</span>.age  = age;</span><br><span class="line">    <span class="keyword">this</span>.job  = job;</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">typeof</span> <span class="keyword">this</span> sayName != <span class="string">'function'</span>) &#123;</span><br><span class="line">        Person.prototype.sayName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            alert(<span class="keyword">this</span>.name);</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> eyesim = <span class="keyword">new</span> Person (<span class="string">'Eyesim'</span>,<span class="number">22</span>,<span class="string">'developer'</span>);</span><br><span class="line">eyesim.sayName();</span><br></pre></td></tr></table></figure></p>
+<h3 id="8、寄生构造函数模式"><a href="#8、寄生构造函数模式" class="headerlink" title="8、寄生构造函数模式"></a><strong>8、寄生构造函数模式</strong></h3><p>通常，在以上几种模式都不适用的情况下，我们可以考虑一下寄生构造函数模式，这个模式就是创建一个函数,而这个函数仅仅是为了封装，然后返回新创建的对象，继续上代码：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span> (<span class="params">name,age,job</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> o = <span class="keyword">new</span> <span class="built_in">Object</span>(();</span><br><span class="line">    o.name = name;</span><br><span class="line">    o.age  = age;</span><br><span class="line">    o.job  = job;</span><br><span class="line">    o.sayName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        alert(<span class="keyword">this</span>.name);</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">return</span> o;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> eyesim = <span class="keyword">new</span> Person (<span class="string">'Eyesim'</span>,<span class="number">22</span>,<span class="string">'developer'</span>);</span><br><span class="line">eyesim.sayName();<span class="comment">//Eyesim</span></span><br></pre></td></tr></table></figure></p>
+<p>这种方法看起来超级像是工厂模式与构造函数模式的结合，但假设我们想要创建一个具有额外方法的特殊数组，这个模是怎么做的呢？<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">specialArr</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> values = <span class="keyword">new</span> <span class="built_in">Array</span>();</span><br><span class="line">    values.push.apply(values,<span class="built_in">arguments</span>);</span><br><span class="line">    values.pipedString = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.join(<span class="string">"|"</span>);</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">return</span> values;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> arr = <span class="keyword">new</span> specialArr(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>);</span><br><span class="line"><span class="built_in">console</span>.log(arr.pipedString()); <span class="comment">//输出 1|2|3</span></span><br></pre></td></tr></table></figure></p>
+<p>这个方法我们创建并初始化了了 arr 数组为 [1,2,3],通过方法 pipedString 返回以竖线为分割的数组值。对于寄生构造函数模式，这里有一点需要说明的，第一，返回的对象与构造函数或者与构造函数的原型属性之间是没有联系的，也就是说构造函数返回的对象与在构造函数外部创建的对象没有什么不同。因此用 instanceof 操作符是不能确定对象类型的，所以一般情况下，不建议使用这种模式。</p>
+<h3 id="9、稳妥构造函数模式"><a href="#9、稳妥构造函数模式" class="headerlink" title="9、稳妥构造函数模式"></a><strong>9、稳妥构造函数模式</strong></h3><p>稳妥对象指的是那些没有公共属性而且其方法也不引用 this 的对象，它最适合在一些安全的环境中，或者在防止数据被其他应用程序改动时使用。稳妥构造函数模式与寄生构造函数类似但又有两点不同：一是新创建对象的实例方法不引用 this ;二是不使用 new 操作符调用构造函数。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span> (<span class="params">name,age,job</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> o = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line">    o.sayName = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        alert(name);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> o;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> eyesim = Person (<span class="string">'Eyesim'</span>,<span class="number">22</span>,<span class="string">'developer'</span>);</span><br><span class="line">eyesim.sayName();<span class="comment">//eyesim</span></span><br></pre></td></tr></table></figure></p>
+<p>这种模式下创建的对象中除了使用 sayName 函数，谁也无法访问 name 属性，即使有代码会给这个对象添加方法或数据成员，但也不可能有别的方法可以访问到构造函数中原始的数据，这种安全性就是该模式最大的特点。但同样要注意的是，稳妥构造函数模式跟寄生构造函数模式一样，创建的对象都无法确定其对象类型。</p>
+
+  </section>
+
+  
+  
+
+<section class="post-comments">
+
+    <div class="ds-thread" data-thread-key="2017/02/05/JavaScript 学习笔记之对象的创建 (1)/"></div>
+
+    <script type="text/javascript">
+      var duoshuoQuery = {short_name:"letian"};
+      (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+        || document.getElementsByTagName('body')[0]).appendChild(ds);
+      })();
+    </script> 
+
+</section>
+
+
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright">&copy; 2014-2015. | 由<a href="https://hexo.io/">Hexo</a>强力驱动 | 主题<a href="https://github.com/someus/huno">Huno</a></span>
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript"> 
+        $(document).ready(function(){
+            MathJax.Hub.Config({ 
+                tex2jax: {inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']]} 
+            });
+        });
+    </script>
+
+
+    
+
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>
