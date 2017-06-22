@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      Web 缓存与 HTTP 状态码 | EyesiM&#39;s Blog 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="EyesiM">
+    
+    
+
+    <meta name="description" content="本文 Web 缓存部分主要参考自腾讯 AlloyTeamhttp://www.alloyteam.com/2012/03/web-cache-1-web-cache-overview/但是 AlloyTeam 把缓存分了几大类，看得有点懵逼，感觉缓存这块分类有点重叠，这里就主要写出我对缓存的理解了。
+一、Web 缓存：1.Web 缓存的作用
+减少网络带宽消耗  无论对于网站运营者或是用户，带宽都代">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Web 缓存与 HTTP 状态码 | EyesiM's Blog">
+<meta property="og:url" content="http://yoursite.com/2017/05/30/Web 缓存与 HTTP 状态码 (1)/index.html">
+<meta property="og:site_name" content="EyesiM's Blog">
+<meta property="og:description" content="本文 Web 缓存部分主要参考自腾讯 AlloyTeamhttp://www.alloyteam.com/2012/03/web-cache-1-web-cache-overview/但是 AlloyTeam 把缓存分了几大类，看得有点懵逼，感觉缓存这块分类有点重叠，这里就主要写出我对缓存的理解了。
+一、Web 缓存：1.Web 缓存的作用
+减少网络带宽消耗  无论对于网站运营者或是用户，带宽都代">
+<meta property="og:updated_time" content="2017-06-22T12:34:58.730Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Web 缓存与 HTTP 状态码 | EyesiM's Blog">
+<meta name="twitter:description" content="本文 Web 缓存部分主要参考自腾讯 AlloyTeamhttp://www.alloyteam.com/2012/03/web-cache-1-web-cache-overview/但是 AlloyTeam 把缓存分了几大类，看得有点懵逼，感觉缓存这块分类有点重叠，这里就主要写出我对缓存的理解了。
+一、Web 缓存：1.Web 缓存的作用
+减少网络带宽消耗  无论对于网站运营者或是用户，带宽都代">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/china-social-icon.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">EyesiM&#39;s Blog</a></h1>
+        <hr class="panel-cover__divider" />
+
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title="" class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title="" class="">关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title="" class="">归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+<nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+    
+      <!-- Github -->
+      <li class="navigation__item">
+        <a href="https://github.com/EyesiM" title="Huno on GitHub">
+          <i class='icon icon-social-github'></i>
+          <span class="label">GitHub</span>
+        </a>
+      </li>
+    
+
+    <!-- China social icon -->
+    <!--
+    
+      <li class="navigation__item">
+        <a href="" title="">
+          <i class='icon cs-icon-douban'></i>
+          <span class="label">Douban</span>
+        </a>
+      </li>
+
+      <li class="navigation__item">
+        <a href="" title="">
+          <i class='icon cs-icon-weibo'></i>
+          <span class="label">Weibo</span>
+        </a>
+      </li>
+
+    -->
+
+
+
+  </ul>
+</nav>
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">Web 缓存与 HTTP 状态码</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2017/05/30" class="post-meta__date date">2017/05/30</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+            <font class="categories">
+            &#8226; 分类:
+            <a class="categories-link" href="/categories/HTTP/">HTTP</a>
+            </font>
+          
+
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <p>本文 Web 缓存部分主要参考自腾讯 AlloyTeam<br><a href="http://www.alloyteam.com/2012/03/web-cache-1-web-cache-overview/" target="_blank" rel="external">http://www.alloyteam.com/2012/03/web-cache-1-web-cache-overview/</a><br>但是 AlloyTeam 把缓存分了几大类，看得有点懵逼，感觉缓存这块分类有点重叠，这里就主要写出我对缓存的理解了。</p>
+<h2 id="一、Web-缓存："><a href="#一、Web-缓存：" class="headerlink" title="一、Web 缓存："></a><strong>一、Web 缓存：</strong></h2><h3 id="1-Web-缓存的作用"><a href="#1-Web-缓存的作用" class="headerlink" title="1.Web 缓存的作用"></a><strong>1.Web 缓存的作用</strong></h3><ul>
+<li><p>减少网络带宽消耗<br>  无论对于网站运营者或是用户，带宽都代表这金钱，过多的带宽消耗，只会便宜了网络运营商。当 Web 缓存副本被使用时，只会产生极小的网络流量，可以有效地降低运营成本。</p>
+</li>
+<li><p>降低服务器压力<br>  给网络资源设定了有效期后，用户可以反复使用本地的缓存，减少对源服务器的请求，间接减少了对服务器的压力，<strong>同时搜索引擎的爬虫机器人也能根据过期机制降低爬取的频率，也能有效降低服务器压力。（这一点还没能理解，稍后得去了解）</strong></p>
+</li>
+<li><p>减少网络延迟，加快页面打开速度<br>带宽对于网站运营者来说是十分重要的，而对于大型的互联网公司来说，可能有时因为钱多而不在乎。那么 Web 缓存还有作用吗？答案是肯定的，对于用户来说，缓存的使用能够明显加快页面打开速度，达到更好的体验。</p>
+</li>
+</ul>
+<h3 id="2-Web-缓存有哪些"><a href="#2-Web-缓存有哪些" class="headerlink" title="2.Web 缓存有哪些"></a><strong>2.Web 缓存有哪些</strong></h3><ul>
+<li><h4 id="数据库数据缓存"><a href="#数据库数据缓存" class="headerlink" title="数据库数据缓存"></a><strong>数据库数据缓存</strong></h4><p>这点 AlloyTeam 提到了 SNS 即社交类型的应用一般在处理查询数据库表的时候的做法：<strong>memcache</strong> 缓存方案，这个方案就是将查询数据库后的数据放在本地内存缓存，下次查询时直接从内存缓存返回，提高响应效率，这个可以去看看我们平常用的微信，我们的聊天数据是一般是放在本地缓存的，除了安全外，我想也有这个响应效率的考虑。<br>说到内存缓存，还有另一个缓存方案：<strong>redis</strong> ，他们有什么区别呢？这部分个人很少接触到，参考了乔锐杰发表的《缓存随谈系列之一：数据库缓存》，得知 redis 与 memcache 在下面三个方面有所不同，应根据实际情况而选择使用：</p>
+<ul>
+<li><strong>数据类型：</strong> mencache 支持简单的数据类型，而 redis 数据类型丰富，支持 set、list 等类型。</li>
+<li><strong>持久性：</strong> mencache 不支持数据持久储存，而 redis 支持数据磁盘持久化存储。</li>
+<li><strong>分布式：</strong> mencache 不支持主从、不支持 sharing（代码层次通过 hash 实现），而 redis 都支持(3.0 开始支持 sharing)。</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><h4 id="代理服务器缓存"><a href="#代理服务器缓存" class="headerlink" title="代理服务器缓存"></a><strong>代理服务器缓存</strong></h4><ul>
+<li><p>代理服务器缓存<br>Web 上的代理服务器是指浏览器和源服务器的中间服务器。<br><strong>一个完整的代理请求过程：</strong><br>客户端先与代理服务器创建连接，根据代理服务器使用的代理协议，请求对源服务器创建连接或者获得源服务器的指定资源。而代理服务器缓存是指后面获取源服务器资源后进行缓存，如果客户端想要获取的资源在代理服务器缓存中有效存在并且没有必须向源服务器拿资源的请求，那么代理服务器将不会像源服务器发起请求，而是直接返回资源给客户端，</p>
+</li>
+<li><p>CDN 缓存<br>之前对 CDN 理解为 反向代理服务器，最近在看大型网站架构，原来 CDN 服务器与反向代理服务器是不一样的， CDN 服务器是部署在距离用户最近的网络服务商那里，这样用户可以很快得拿到请求的内容，这就是大家常提起的就近原则，一般来说，CDN 服务器适合放我们的静态文件以及热点内容。而这里提到的反向代理服务器，则是部署在前端，当请求到达网站的数据中心时，最先访问的是反向代理服务器。</p>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><h4 id="浏览器缓存"><a href="#浏览器缓存" class="headerlink" title="浏览器缓存"></a><strong>浏览器缓存</strong></h4><p>浏览器可以缓存服务器给它传输的信息，那么浏览器是怎么判断需不需要缓存的呢？通过什么来判断？什么情况下访问代理服务器什么情况下访问源服务器？</p>
+<p>  <strong>1、HTTP 缓存</strong><br>这里就涉及了 <strong>HTTP 缓存机制</strong>，但 HTTP 缓存不仅涉及浏览器还应有代理缓存服务器，HTTP 缓存体系大致可以分为缓存存储策略、缓存过期策略、缓存对比策略。</p>
+<ul>
+<li><p><strong>缓存存储策略：</strong>用来确定 HTTP 响应内容是否能被客户端存储，以及可以被哪些客户端存储。<br>这里 HTTP 中给客户端发起的 HTTP 请求提供了 <strong>Cache-Control</strong> 首部字段用于判断是否缓存与访问源服务器。<br>Cache-Control 中有多个值，例如 <strong>public、private、no-store、no-cache、no-transform、must-revalidate、proxy-revalidate、max-age</strong> 等等，那这些值分别的指令含义是什么呢？</p>
+<ul>
+<li>max-age: 表示可以缓存的时间，以秒为单位，如果对比时间过期了或者为零，则代理服务器通常会向源服务器转发请求，这里得借助缓存对比策略。</li>
+<li>public：表示响应也可被其他用户缓存</li>
+<li>private：响应只能被特定用户缓存</li>
+<li>no-cache：这里通常等于 max-age=0 ，而 max-age=0又可以分拆为 Cache-Control: public/private;Expires:当前时间。</li>
+<li>no-store:暗示响应机密，不在本地存储请求或响应</li>
+<li>no-transform:</li>
+<li>must-revalidate</li>
+<li>proxy-revalidate</li>
+</ul>
+</li>
+<li><p><strong>缓存过期策略：</strong>用来确定本地存储数据是否过期再决定是否要请求到服务器端获取数据<br>这个策略主要利用上面提到的 Expires 的首部字段，Expires 指明了缓存数据的有效时间，告诉客户端，到了这个时间点（对比客户端时间点）后本地缓存就作废了，在这个时间点内，客户端的缓存还有效，可以利用来加载展示。<br>但是要注意一点，Cache-Control 中的 max-age 的设置会优先于 Expires 的设置。</p>
+</li>
+<li><p><strong>缓存对比策略：</strong>将缓存在客户端的数据标识发往服务端，服务端通过标识判断缓存数据是否有效决定是否重发数据。<br>客户端检测到数据过期或是浏览器刷新后往往会重发 HTTP 请求到服务器，服务器这个时候并不是立马返回数据，而是判断请求头部有没带有条件请求标识，这里会结合 Last-Modified 与 ETags 字段一起判断有无效再做响应的决定。</p>
+<p>  <strong>条件请求字段的判断：Last-modified 与 Etag</strong><br>与缓存相关的首部条件请求字段</p>
+</li>
+</ul>
+<ol>
+<li><p>If-Match </p>
+<blockquote>
+<p>客户端发送请求时附带条件，服务器接收到后匹配相应的 ETag 值，如果相符，则处理请求，反之返回状态码 412 Precondition Failed.</p>
+</blockquote>
+</li>
+<li><p>If-Modified-Since</p>
+<blockquote>
+<p>客户端向服务器发出请求，告知服务器如果 If-Modified-Since 字段值早于资源更新的时间，也就是资源已更新，则希望服务器能处理这个请求，如果资源还没有更新，则返回状态码 304 Not Modeified.</p>
+</blockquote>
+</li>
+<li><p>If-None-Match</p>
+<blockquote>
+<p>这个条件作用与 If-Match 刚好相反，如果 ETag 值不匹配才处理请求，符合则返回状态码 304 Not Modeified.</p>
+</blockquote>
+</li>
+<li><p>If-Range</p>
+<blockquote>
+<p>如果 ETag 值相符则证明在服务器中能到该请求文件，表明就希望服务器范围处理请求，如果不符合则全部处理请求，返回整体文件。</p>
+</blockquote>
+</li>
+<li><p>If-Unmodified-Since</p>
+<blockquote>
+<p>这个条件作用与 If-Modified-Since 刚好相反,如果资源还没更新则处理请求，否则返回状态码 412 Precondition Failed.</p>
+</blockquote>
+<p><strong>2、Cookie</strong><br>HTTP Cookie 通常叫做 cookie,最初是为了在客户端存储会话信息，这个标准要求服务器对任意的 HTTP 请求发送 Set-Cookie 的 HTTP 头作为相应地一部分，其中包括会话信息，但 cookie 的内存比较小，最大为 4k ，所以一般存储的信息为 sessionID 等内容，客户端发起 HTTP 请求中带有的 cookie 是唯一可以用于服务器验证客户的来源，或说是网站辨别用户进行 session 跟踪而储存在用户本地的数据（通常有经过加密）。</p>
+</li>
+</ol>
+<ul>
+<li><strong>限制性</strong><ul>
+<li><strong>尺寸限制：</strong> 大多数的浏览器都有大约 4096B（加减 1）的长度限制，但为了浏览器兼容性还是最好限制在 4095B 以内。如果超出最大尺寸，该 cookie 会被悄无声息丢掉。<br><strong>每个域的总数限制：</strong> IE6 每个域名最多 50 个，IE7 每个域名最多 50 个，Firefox 最多 50 个，Opera 最多 30 个，Safari 和 Chrome 没有硬性规定。</li>
+</ul>
+</li>
+<li><p><strong>构成</strong></p>
+<ul>
+<li>name： 不分大小写，唯一并确定，但最好还是区分大小写因为有些服务会分大小写处理 cookie，且名字必须经过 URL 编码。</li>
+<li>值： 储存在 cookie 中的字符串值，必须 URL 编码。</li>
+<li>域： cookie 对于哪个域是有效的。如果没明确设定，该域为来自设置 cookie 的哪个域。</li>
+<li>路径： 对于指定域中的那个路径，应该向服务器发送 cookie ，那么没有其他域不会被发送 cookie 信息。</li>
+<li>失效时间： 表示 cookie 何时应该被删除的时间戳，默认情况下到了失效时间，浏览器会话结束的时候会将所有的 cookie 删掉，不过也可以自己设置删除时间，用于指定应该删除的准确时间，因此 cookie 没到期的话，浏览器关闭后也会保存在用户的机器上。</li>
+<li>安全标志：指定后 cookie 只有使用 SSL 连接的时候才发送到服务器。</li>
+<li>JavaScript 中的 cookie<br>document.cookie 返回当前可用的 cookie<br>URL 编码，必须用 decodeURIComponent() 来编码。</li>
+</ul>
+<p>但注意的是：一定不要在 cookie 中存放重要和敏感的数据， cookie 数据并非存储在一个安全的环境里面，其中包含的数据都可以被他人访问，容易引起 Web 安全的问题，所以不要在 cookie 中存储注入信用卡号或者个人地址数据。 </p>
+<p><strong>3、localStorage</strong></p>
+<p>localStorage 是 HTML5 中新增的一种本地缓存方案，取代了 globalStorage，一般用来存储 ajax 返回的数据，加快下次页面打开时的渲染速度。但是要注意的是，要访问 localStorage 页面必须来自同一个域名（子域名无效），使用同一种协议，在同一个端口上。另外，localStorage 保存的最大容量为 5M, localStorage 属性允许你访问一个 local Storage 对象。localStorage 与 sessionStorage 相似。不同之处在于，存储在 localStorage 里面的数据没有过期时间（expiration time），而存储在 sessionStorage 里面的数据会在浏览器会话（browsing session）结束时被清除，即浏览器关闭时。</p>
+<p><strong>4、sessionStorage</strong><br>存储在 sessionStorage 里面的数据在页面会话结束时会被清除,数据保存的最大容量为 5M,。页面会话在浏览器打开期间一直保持，并且重新加载或恢复页面仍会保持原来的页面会话。在新标签或窗口打开一个页面会初始化一个新的会话，这点和 session cookies 的运行方式不同。另外 sessionStorage 与 localStorage 一样，保存的数据仅限于该页面的协议。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="二、常见状态码："><a href="#二、常见状态码：" class="headerlink" title="二、常见状态码："></a><strong>二、常见状态码：</strong></h4><p>我们没必要所有状态码都记得一清二楚，主要把类型分清楚就 ok 了。</p>
+<p><strong>1XX:</strong> 1XX 并不是经常用，但说到分类，还是可以说说，1XX 状态码的返回表示接收的请求正在处理。</p>
+<p><strong>2XX:</strong> 2XX 代表请求成功，我们最常见的是：</p>
+<ul>
+<li><strong>200 OK :</strong> 表示客户端发来的请求被服务器正常处理了。</li>
+<li><strong>204 No Content:</strong> 表示服务器接收到的请求已成功处理，但是返回的响应报文中不含实体的主体部分，也不允许返回实体的主体，也就是说浏览器显示的页面不发生更新。（一般只用作当只需要客户端发信息服务器）</li>
+<li><strong>206 Partical Content：</strong> 当客户端发起范围请求时服务器成功处理响应返回的状态码。</li>
+</ul>
+<p><strong>3XX：</strong>表示重定向，这里一般会伴随响应首部的 Location 字段一起返回，而且几乎所有的浏览器在接收到含有首部 Location 的响应后都会强制性地尝试对已提示的重定向资源进行访问，所以 3XX 为重定向状态码 ，常见的有：</p>
+<ul>
+<li><strong>301 Moved Permaently:</strong> 永久性重定向，表示请求的资源已经被分配了新的 URI 。 </li>
+<li><strong>302 Found:</strong> 临时性重定向，表示请求的资源已经被分配了新资源，希望本次使用新的 URI 访问，这个与 301 不一样的是，如果请求的 URI 已经被保存为书签，301 会强制更改书签的 URI 为 Location 所对应的值，但 302 不会更改，它仅表示这次访问的 URI 变化，是临时性的。</li>
+<li><strong>303 See Other:</strong> 请求的资源存在另一个 URI ，应使用 GET 请求定向请求的资源。303 与 302 也是非常相似的，但是 303 明确表示客户端应当使用 GET 方法重定向获取资源。这里再提一下，当 301 、302、303 状态码返回时，几乎所有的浏览器都会把 POST 改成 GET 请求，并删除请求报文的主体，之后请求会自动再次发送，但是 301 与 302 的标准是禁止将 POST 方法改变成 GET 方法的，但实际使用时，浏览器还是这么干了。</li>
+<li><strong>304 Not Modified：</strong> 该状态码表示客户端发送附带请求时，服务器允许请求访问资源，但是因为发起的请求没有满足请求附带的条件而返回的这个 304 状态码（也就是说，服务器的资源没有发生改变可以直接使用客户端未过期的缓存），不过这个 304 与重定向无关啦，另外，这里的提到的附带请求指的是：If-Modified-Since 与 If-None-Match。</li>
+<li><strong>307 Temporary Redirect：</strong> 临时重定向，这个状态码与 302 十分相似，但不同在于 307 会严格遵照浏览器的规则，不会让 POST 方法变成 GET 方法。</li>
+</ul>
+<p><strong>4XX：</strong> 客户端错误，表示客户端才是发生错误的原因所在。</p>
+<ul>
+<li><strong>400 Bad Request：</strong>表示请求报文存在语法错误，当错误发生的时候需修改请求内容后再次发送请求，另外浏览器会像对待 200 OK 那样对待它。（有点疑惑这里，稍后查）</li>
+<li><strong>401 Unauthorized：</strong>表示发送的请求需要有通过 HTTP 认证的认证信息，这里一般配合 WWW-Authenticate 响应首部字段一起返回，如果之前已经进行过一次请求，就说明用户认证失败，如果是浏览器第一次接收到 401 响应，就会弹出认证使用的对话窗口。</li>
+<li><strong>403 Forbidden：</strong> 表明对请求资源的访问被服务器拒绝了，服务器没有必要给出拒绝的详细理由（没有访问授权等）</li>
+<li><strong>404 Not Found：</strong><br>该状态码表明服务器找不到对应的请求资源。</li>
+</ul>
+<p><strong>5XX：</strong> 服务器错误，服务器本身发生错误</p>
+<ul>
+<li><strong>500 Internet Server Error：</strong> 服务器在执行请求的时候发生了错误，也可能是由于 Web 应用存在 bug 或临时故障。</li>
+<li><strong>503 Service Unavailable：</strong> 服务器暂时处于超负载或正在进行停机维护，现在无法处理请求，一般如果知道解除上述情况大概的时间，可以在响应首部加上 Retry-After 字段返回给客户端，告诉客户端可以在多久后再次发起请求。</li>
+</ul>
+
+  </section>
+
+  
+  
+
+<section class="post-comments">
+
+    <div class="ds-thread" data-thread-key="2017/05/30/Web 缓存与 HTTP 状态码 (1)/"></div>
+
+    <script type="text/javascript">
+      var duoshuoQuery = {short_name:"letian"};
+      (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+        || document.getElementsByTagName('body')[0]).appendChild(ds);
+      })();
+    </script> 
+
+</section>
+
+
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright">&copy; 2014-2015. | 由<a href="https://hexo.io/">Hexo</a>强力驱动 | 主题<a href="https://github.com/someus/huno">Huno</a></span>
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript"> 
+        $(document).ready(function(){
+            MathJax.Hub.Config({ 
+                tex2jax: {inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']]} 
+            });
+        });
+    </script>
+
+
+    
+
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>
