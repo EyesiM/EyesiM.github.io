@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      模块化下的设计模式 | EyesiM&#39;s Blog 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="EyesiM">
+    
+    
+
+    <meta name="description" content="模块化: 
+模块化意味着应用程序高度解耦并且它是由一些列存储于模块中的高度解耦、不同功能的片段组成
+CommonJs（更适用于服务端）代表： node.jseg: 
+12var math = require(&quot;math&quot;);math.add(1,2);
+对于浏览器来说，math.add 想要运行必须要等待 math.js 给加载完成才可，而在服务端，因为所有模块都放在硬盘，可以同时加载完成，等待">
+<meta property="og:type" content="article">
+<meta property="og:title" content="模块化下的设计模式 | EyesiM's Blog">
+<meta property="og:url" content="http://yoursite.com/2017/08/01/模块化下的设计模式/index.html">
+<meta property="og:site_name" content="EyesiM's Blog">
+<meta property="og:description" content="模块化: 
+模块化意味着应用程序高度解耦并且它是由一些列存储于模块中的高度解耦、不同功能的片段组成
+CommonJs（更适用于服务端）代表： node.jseg: 
+12var math = require(&quot;math&quot;);math.add(1,2);
+对于浏览器来说，math.add 想要运行必须要等待 math.js 给加载完成才可，而在服务端，因为所有模块都放在硬盘，可以同时加载完成，等待">
+<meta property="og:updated_time" content="2017-08-02T15:42:43.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="模块化下的设计模式 | EyesiM's Blog">
+<meta name="twitter:description" content="模块化: 
+模块化意味着应用程序高度解耦并且它是由一些列存储于模块中的高度解耦、不同功能的片段组成
+CommonJs（更适用于服务端）代表： node.jseg: 
+12var math = require(&quot;math&quot;);math.add(1,2);
+对于浏览器来说，math.add 想要运行必须要等待 math.js 给加载完成才可，而在服务端，因为所有模块都放在硬盘，可以同时加载完成，等待">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/china-social-icon.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">EyesiM&#39;s Blog</a></h1>
+        <hr class="panel-cover__divider" />
+
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title="" class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title="" class="">关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title="" class="">归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+<nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+    
+      <!-- Github -->
+      <li class="navigation__item">
+        <a href="https://github.com/EyesiM" title="Huno on GitHub">
+          <i class='icon icon-social-github'></i>
+          <span class="label">GitHub</span>
+        </a>
+      </li>
+    
+
+    <!-- China social icon -->
+    <!--
+    
+      <li class="navigation__item">
+        <a href="" title="">
+          <i class='icon cs-icon-douban'></i>
+          <span class="label">Douban</span>
+        </a>
+      </li>
+
+      <li class="navigation__item">
+        <a href="" title="">
+          <i class='icon cs-icon-weibo'></i>
+          <span class="label">Weibo</span>
+        </a>
+      </li>
+
+    -->
+
+
+
+  </ul>
+</nav>
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">模块化下的设计模式</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2017/08/01" class="post-meta__date date">2017/08/01</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+            <font class="categories">
+            &#8226; 分类:
+            <a class="categories-link" href="/categories/web前端开发/">web前端开发</a>
+            </font>
+          
+
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <hr>
+<p><strong>模块化:</strong> </p>
+<p>模块化意味着应用程序高度解耦并且它是由一些列存储于模块中的高度解耦、不同功能的片段组成</p>
+<p><strong>CommonJs</strong>（更适用于服务端）<br>代表： node.js<br>eg: </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> math = <span class="built_in">require</span>(<span class="string">"math"</span>);</span><br><span class="line">math.add(<span class="number">1</span>,<span class="number">2</span>);</span><br></pre></td></tr></table></figure>
+<p>对于浏览器来说，math.add 想要运行必须要等待 math.js 给加载完成才可，而在服务端，因为所有模块都放在硬盘，可以同时加载完成，等待的只是硬盘读取的时间，而对于浏览器来说，等待的是网速，因此浏览器可能长时间处于假死状态。</p>
+<p>写法:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//testModule.js</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">testModule</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">module</span>.exports = testModule;</span><br></pre></td></tr></table></figure></p>
+<p>使用 testModule 方法：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> testModule = <span class="built_in">require</span>(<span class="string">'testModule.js'</span>);</span><br><span class="line">testModule();</span><br></pre></td></tr></table></figure></p>
+<p>CommonJS 采用服务器优先方法，假定同步行为，没有全局概念。</p>
+<p><strong>AMD</strong><br>    代表： Angular<br>    写法：<br>AMD 相对 CommonJS 采用浏览器优先的开发方法，选择异步行为和简化的向后兼容性</p>
+<ul>
+<li><p>定义模块</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//myModule.js</span></span><br><span class="line">define([<span class="string">'foo'</span>, <span class="string">'bar'</span>], <span class="function"><span class="keyword">function</span>(<span class="params">foo, bar</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> myModule = &#123;</span><br><span class="line">        sayHello: <span class="function"><span class="keyword">function</span> </span>&#123;</span><br><span class="line">            alert(<span class="string">'Hello Eyesim'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">return</span> myModule;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>加载模块<br>这里的 require([module], callback) 与 CommonJS 不同于 ADM 的 require 是有两个参数的，第一个是依赖的模块数组，第二个是加载完模块后模块执行的函数。也就是说：AMD规范则是非同步加载模块，允许指定回调函数。对于浏览器环境来说，要从服务器加在模块，这个时候必须采用非同步模式，所以浏览器环境更适合于使用 AMD。</p>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">require</span>([<span class="string">'src/myModule'</span>], <span class="function"><span class="keyword">function</span>(<span class="params">myModule</span>)</span>&#123;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p><strong>ES6</strong><br>参考：阮一峰 <a href="http://es6.ruanyifeng.com/#docs/module" target="_blank" rel="external">Module 的语法</a><br>在 ES6 之前，JS 一直没有模块体系，没法将一个大程序拆分成相互依赖的解耦的模块，CommonJS 与 AMD 出现解决了部分问题，但这两个方案一个用在服务器端一个用在客户端，而 ES6 的出现，可以完全取代了 CommonJS 和 AMD 规范，成为浏览器与服务器通用的模块解决方法。<br>但在 ES6 标准里，并没有将 require 、exports对象写进标准，而是用 import 、以及 export 指令代替。那这里的 ES6 的写法和原本的 CommmonJS 以及 AMD 的写法有什么不同呢？</p>
+<p>写法上:</p>
+<ul>
+<li><p>规定模块对外的接口（导出接口）：</p>
+<ul>
+<li>声明时导出<br>eg:<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//func.js</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">var</span> b = &#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">let</span> c = ...;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code>- 以对象形式导出
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var d = 1;</span><br><span class="line">export &#123;a&#125;;//类似于 &#123;a:a&#125;</span><br><span class="line"></span><br><span class="line">function e() &#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line">export &#123;e&#125;;</span><br></pre></td></tr></table></figure>
+
+
+另外，export 还可以使用 as 关键词对接口进行重命名：
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f1</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f2</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> &#123;</span><br><span class="line">    f1 <span class="keyword">as</span> funcF1,</span><br><span class="line">    f2 <span class="keyword">as</span> funcF2</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+注意一点： export 命令规定的是对外的接口，必须与模块内部的变量建立一一对应的关系。所以下面这种写法是错的：
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="number">1</span>;<span class="comment">//报错</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> num2 = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">export</span> num2;<span class="comment">//报错</span></span><br></pre></td></tr></table></figure>
+
+
+上面的写法里面，1 是一个值，不是接口，应该像下面这种写法才对：
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//number.js</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">var</span> num1 =<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> num2 = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">export</span> &#123;num2&#125;;<span class="comment">//等价于 &#123;num2: num2&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> num3 = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">export</span> &#123;num3 <span class="keyword">as</span> num3&#125;;</span><br></pre></td></tr></table></figure>
+</code></pre><ul>
+<li>模块加载<br>模块加载上,ES6 采取的是 import 命令。<br>eg:<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; num1, num2 &#125; <span class="keyword">from</span> <span class="string">'./number'</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> sum = num1 + num2;</span><br><span class="line">    <span class="keyword">return</span> sum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>另外，想要给引入的方法或变量重命名的话，也可以使用关键字 as ：<br>eg:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; num1 <span class="keyword">as</span> n1 &#125; <span class="keyword">from</span> <span class="string">'./number'</span></span><br></pre></td></tr></table></figure></p>
+<p>import 后面的 from 指定模块文件的位置，可以是相对路径，也可以是绝对路径, .js 的后缀可以省略，如果只是模块名，不带路径，但是必须要有配置文件，告诉 JavaScript 引擎该模块的位置。<br>注意一点：<br>import 命令具有提升效果，会提升到整个模块的头部，首先执行。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">f1();</span><br><span class="line"><span class="keyword">import</span> &#123; a <span class="keyword">as</span> f1 &#125; <span class="keyword">from</span> <span class="string">'./func'</span></span><br></pre></td></tr></table></figure></p>
+<p>另外， import 是静态执行，不能使用表达式与变量，否则会报错。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; <span class="string">'num'</span> +<span class="string">'1'</span> &#125; <span class="keyword">from</span> <span class="string">'./number'</span>;<span class="comment">//报错</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> numModule = <span class="string">'./number'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; num1 &#125; <span class="keyword">from</span> numModule;<span class="comment">//报错</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//报错</span></span><br><span class="line"><span class="keyword">if</span>( flag === <span class="number">1</span> ) &#123;</span><br><span class="line">    <span class="keyword">import</span> &#123; num1 <span class="keyword">as</span> num &#125; <span class="keyword">from</span> <span class="string">'./number'</span>;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="keyword">import</span> &#123; num2 <span class="keyword">as</span> num &#125; <span class="keyword">from</span> <span class="string">'./number'</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>最后，如果多次执行同一句语句或加载同一个模块，那么只会执行一次加载。</p>
+<p>eg:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//多次重复的 import 语句，只会执行一次。</span><br><span class="line">import &apos;util&apos;;</span><br><span class="line">import &apos;util&apos;;</span><br><span class="line"></span><br><span class="line">//多次加载同一个模块，只会执行一次</span><br><span class="line">import &#123; num1 &#125; from &apos;./number&apos;;</span><br><span class="line">import &#123; num2 &#125; from &apos;./number&apos;;</span><br></pre></td></tr></table></figure>
+<p>取值上：</p>
+<ul>
+<li>export 输出的接口与其对应的值是动态绑定关系</li>
+</ul>
+<p>也就是说，通过该接口可以取到模块内部实时的值。而 CommonJS 模块取出的值是缓存的，不存在动态更新。<br>另外， export 命令可以放到模块的任何地方，只要处于模块顶层就可以了。如果处于块级作用域里面则会报错。<br>eg:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f1</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">export</span> <span class="keyword">default</span> <span class="string">'funcF1'</span>;<span class="comment">//报错</span></span><br><span class="line">&#125;</span><br><span class="line">f1();</span><br></pre></td></tr></table></figure></p>
+<p>这是由于处于代码块中，就没法做静态优化了，ES6 模块的设计思想，是尽量的静态化，使得编译时就能确定模块的依赖关系，以及输入和输出的变量。而 CommonJS 和 AMD 模块，都只能在运行时确定这些东西。比如，CommonJS 模块就是对象，输入时必须查找对象属性。</p>
+<p>eg:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// CommonJS模块</span></span><br><span class="line"><span class="keyword">let</span> &#123; stat, exists, readFile &#125; = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 等价于</span></span><br><span class="line"><span class="keyword">let</span> _fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line"><span class="keyword">let</span> stat = _fs.stat;</span><br><span class="line"><span class="keyword">let</span> exists = _fs.exists;</span><br><span class="line"><span class="keyword">let</span> readfile = _fs.readfile;</span><br></pre></td></tr></table></figure></p>
+<p>CommonJS 实际上是整体加载 fs 模块然后生成一个 _fs 对象，然后再从这个对象上面读取 3 个方法，这种加载模式叫做“运行时加载”，因为只有运行时才能得到这个对象，导致完全没办法在编译时做“静态优化”，而 ES6 的模块不是对象，而是通过 export 命令显式指定输出的代码，再通过 import 命令输入。</p>
+<p>eg:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//ES6 模块</span></span><br><span class="line"><span class="keyword">import</span> &#123; stat, exists, readFile &#125; <span class="keyword">from</span> <span class="string">'fs'</span>;</span><br></pre></td></tr></table></figure></p>
+<p>ES6 这种方式实质上是从 fs 模块中加载三个方法，其他方法不加载也就是不会加载 ES6 模块本身，因为它不是个对象，这种方法叫做“编译时加载”或者“静态加载”，即 ES6 可以在编译时就完成了模块加载，效率比 CommonJS 要。<br>注意一点： ES6 的模块自动采用严格模式，即便你没有在头部加上 “use strict”。</p>
+<p>严格模式主要有以下限制。</p>
+<pre><code>1. 变量必须声明后再使用
+2. 函数的参数不能有同名属性，否则报错
+3. 不能使用with语句
+4. 不能对只读属性赋值，否则报错
+5. 不能使用前缀0表示八进制数，否则报错
+6. 不能删除不可删除的属性，否则报错
+7. 不能删除变量delete prop，会报错，只能删除属性delete global[prop]
+8. eval不会在它的外层作用域引入变量
+9. eval和arguments不能被重新赋值
+10. arguments不会自动反映函数参数的变化
+11. 不能使用arguments.callee
+12. 不能使用arguments.caller
+13. 禁止this指向全局对象
+14. 不能使用fn.caller和fn.arguments获取函数调用的堆栈
+15. 增加了保留字（比如protected、static和interface）
+</code></pre>
+  </section>
+
+  
+  
+
+<section class="post-comments">
+
+    <div class="ds-thread" data-thread-key="2017/08/01/模块化下的设计模式/"></div>
+
+    <script type="text/javascript">
+      var duoshuoQuery = {short_name:"letian"};
+      (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+        || document.getElementsByTagName('body')[0]).appendChild(ds);
+      })();
+    </script> 
+
+</section>
+
+
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright">&copy; 2014-2015. | 由<a href="https://hexo.io/">Hexo</a>强力驱动 | 主题<a href="https://github.com/someus/huno">Huno</a></span>
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript"> 
+        $(document).ready(function(){
+            MathJax.Hub.Config({ 
+                tex2jax: {inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']]} 
+            });
+        });
+    </script>
+
+
+    
+
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>
