@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      JavaScript 基础篇之注意点 | EyesiM&#39;s Blog 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="EyesiM">
+    
+    
+
+    <meta name="description" content="一、定义函数的方式定义函数的方式有两种，分别是：函数声明与函数表达式函数声明：123function fun1(a,b,c) &amp;#123;    //函数体&amp;#125;
+函数表达式：123var fun2 = function(a,b,c)&amp;#123;    //函数体&amp;#125;;
+这两种方法有什么区别呢?１、函数声明提升函数声明的一个重要特征就是函数声明提升，意思在执行代码前先读取函数声明，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript 基础篇之注意点 | EyesiM's Blog">
+<meta property="og:url" content="http://yoursite.com/2017/07/27/JavaScript 基础篇之注意点/index.html">
+<meta property="og:site_name" content="EyesiM's Blog">
+<meta property="og:description" content="一、定义函数的方式定义函数的方式有两种，分别是：函数声明与函数表达式函数声明：123function fun1(a,b,c) &amp;#123;    //函数体&amp;#125;
+函数表达式：123var fun2 = function(a,b,c)&amp;#123;    //函数体&amp;#125;;
+这两种方法有什么区别呢?１、函数声明提升函数声明的一个重要特征就是函数声明提升，意思在执行代码前先读取函数声明，">
+<meta property="og:updated_time" content="2017-08-02T16:33:26.664Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript 基础篇之注意点 | EyesiM's Blog">
+<meta name="twitter:description" content="一、定义函数的方式定义函数的方式有两种，分别是：函数声明与函数表达式函数声明：123function fun1(a,b,c) &amp;#123;    //函数体&amp;#125;
+函数表达式：123var fun2 = function(a,b,c)&amp;#123;    //函数体&amp;#125;;
+这两种方法有什么区别呢?１、函数声明提升函数声明的一个重要特征就是函数声明提升，意思在执行代码前先读取函数声明，">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/china-social-icon.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">EyesiM&#39;s Blog</a></h1>
+        <hr class="panel-cover__divider" />
+
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title="" class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title="" class="">关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title="" class="">归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+<nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+    
+      <!-- Github -->
+      <li class="navigation__item">
+        <a href="https://github.com/EyesiM" title="Huno on GitHub">
+          <i class='icon icon-social-github'></i>
+          <span class="label">GitHub</span>
+        </a>
+      </li>
+    
+
+    <!-- China social icon -->
+    <!--
+    
+      <li class="navigation__item">
+        <a href="" title="">
+          <i class='icon cs-icon-douban'></i>
+          <span class="label">Douban</span>
+        </a>
+      </li>
+
+      <li class="navigation__item">
+        <a href="" title="">
+          <i class='icon cs-icon-weibo'></i>
+          <span class="label">Weibo</span>
+        </a>
+      </li>
+
+    -->
+
+
+
+  </ul>
+</nav>
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">JavaScript 基础篇之注意点</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2017/07/27" class="post-meta__date date">2017/07/27</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+            <font class="categories">
+            &#8226; 分类:
+            <a class="categories-link" href="/categories/JavaScript/">JavaScript</a>
+            </font>
+          
+
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <hr>
+<h3 id="一、定义函数的方式"><a href="#一、定义函数的方式" class="headerlink" title="一、定义函数的方式"></a><strong>一、定义函数的方式</strong></h3><p>定义函数的方式有两种，分别是：函数声明与函数表达式<br><strong>函数声明：</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun1</span>(<span class="params">a,b,c</span>) </span>&#123;</span><br><span class="line">    <span class="comment">//函数体</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>函数表达式：</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fun2 = <span class="function"><span class="keyword">function</span>(<span class="params">a,b,c</span>)</span>&#123;</span><br><span class="line">    <span class="comment">//函数体</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>这两种方法有什么区别呢?<br>１、函数声明提升<br>函数声明的一个重要特征就是函数声明提升，意思在执行代码前先读取函数声明，如果我在下面的代码中找到了这个函数的，一样会执行这个函数，也就是说我们可以将函数声明放在调用它的后面。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a();<span class="comment">//Hi!</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    alert(<span class="string">"Hi!"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这个例子会执行 a() 方法，弹出 Hi!<br>而使用函数表达式的方式定义函数则不会出现函数声明提升这一种情况并且浏览器会报错<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">b();<span class="comment">//Uncaught TypeError: b is not a function</span></span><br><span class="line"><span class="keyword">var</span> b = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    alert(<span class="string">"Hi!"</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>２、name 属性<br>使用函数声明的方式的函数会拥有一个 name 属性，可以通过这个属性访问到函数的名字，但在 ECMAScript5 使用函数表达式的方式则 name 属性为空字符串，但 ECMAScript6 中这个问题已经解决了,即使使用函数表达式也能够返回 name 的值</p>
+<p>３、函数的覆盖<br>这一点主要体现在用判断语句决定函数的定义的时候，例如：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="literal">true</span>) &#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">sayName</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        alert(<span class="string">"Eyesim"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">sayName</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        alert(<span class="string">"Gordorn"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>实际上这个在 ECMAScript 中属于无效语法，于是 JavaScript 引擎会尝试对其进行修改，但注意一点是，有些浏览器会将其修改返回第二个函数，但如果用函数表达式的方式声明就不会产生这个问题了。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> sayHi;</span><br><span class="line"><span class="keyword">if</span>(<span class="literal">true</span>)&#123;</span><br><span class="line">    sayHi = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        alert(<span class="string">"Eyesim"</span>);</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">    sayHi = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        alert(<span class="string">"Gordorn"</span>);</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="二、窗口大小"><a href="#二、窗口大小" class="headerlink" title="二、窗口大小"></a><strong>二、窗口大小</strong></h4><p><strong>innerWidth、outerWidth、clientWidth 这三个的区别是什么?</strong></p>
+<h4 id="1-innerWidth-与-outerWidth"><a href="#1-innerWidth-与-outerWidth" class="headerlink" title="1.innerWidth 与 outerWidth"></a><strong>1.innerWidth 与 outerWidth</strong></h4><p>在 IE9+、Chrome、Opera、Firefox 与 Safari 中的 innerWidth 与 outerWidth 的定义是不一样的：</p>
+<blockquote>
+<p><strong>IE9+、Firefox 与 Safari：</strong> outerWidth 返回的是浏览器窗口本身的尺寸</p>
+<p><strong>Opera：</strong>  outerWidth 表示的是页面视图容器的大小，而 innerWidth 则表示表示页面视图的大小（即减去边框宽度）</p>
+<p><strong>Chrome：</strong> innerWidth 和 outerWidth 返回的是 viewport 大小</p>
+</blockquote>
+<h4 id="2-clientWidth"><a href="#2-clientWidth" class="headerlink" title="2.clientWidth"></a><strong>2.clientWidth</strong></h4><p><a href="http://eyesim.github.io/2017/07/26/%E5%B0%BA%E5%AF%B8%E6%A6%82%E5%BF%B5/" target="_blank" rel="external">具体可参考我的另一篇博文</a></p>
+<h4 id="三、Boolean-对象与-Boolean-值在-if-转换中的区别"><a href="#三、Boolean-对象与-Boolean-值在-if-转换中的区别" class="headerlink" title="三、Boolean 对象与 Boolean 值在 if()转换中的区别"></a><strong>三、Boolean 对象与 Boolean 值在 if()转换中的区别</strong></h4><p>我们来看一下例子：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="keyword">new</span> <span class="built_in">Boolean</span>();</span><br><span class="line"><span class="keyword">if</span>(x) &#123;</span><br><span class="line">    alert(<span class="string">"hi"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> y = <span class="built_in">Boolean</span>(<span class="number">0</span>);</span><br><span class="line"><span class="keyword">if</span>(y) &#123;</span><br><span class="line">    alert(<span class="string">"hello"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>猜一下代码上面显示的结果是什么？hi?hello?hi hello?还是不显示？<br>答案是：hi。<br>实际上，x 为 Boolean 对象，在 if 语句中的判断为 true,虽然 x 的值为 false ，<strong>但在布尔表达式式中，所有的对象都会被转换为 true</strong> ，y 就不用说了，值为 false,所以上面的结果为 hi。</p>
+<h4 id="四、parseInt-数值转换"><a href="#四、parseInt-数值转换" class="headerlink" title="四、parseInt 数值转换"></a><strong>四、parseInt 数值转换</strong></h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="built_in">parseInt</span>(<span class="number">0x10</span>),</span><br><span class="line">    b = <span class="built_in">parseInt</span>(<span class="number">10</span>);</span><br><span class="line"><span class="built_in">console</span>.log(a,b);</span><br></pre></td></tr></table></figure>
+<p>猜一下上面 a 与 b 输出的结果是什么？</p>
+<ul>
+<li>10 10? </li>
+<li>0 10? </li>
+<li>16 10?</li>
+<li>NAN NAN？</li>
+<li>报错？</li>
+</ul>
+<p>实际上输出为： 16 10.<br><strong>parseInt(a,b) 有两个参数:</strong></p>
+<ul>
+<li>a 是你要转换的数值或字符</li>
+<li>b 是你要转换的进制，一般 b 没填会默认为十进制。</li>
+</ul>
+<p><strong>注意点(不填第二个参数的情况下)：</strong></p>
+<ol>
+<li>当 a 为数值时非字符串：</li>
+</ol>
+<ul>
+<li>0x 开头会被默认为十六进制解析</li>
+<li>0 开头会被默认为八进制解析</li>
+<li>其它数字开头均当以十进制解析</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="built_in">parseInt</span>(<span class="number">010</span>),</span><br><span class="line">    b = <span class="built_in">parseInt</span>(<span class="number">0x10</span>),</span><br><span class="line">    c = <span class="built_in">parseInt</span>(<span class="number">10</span>),</span><br><span class="line">    d = <span class="built_in">parseInt</span>(<span class="number">10.</span><span class="number">.222</span>);</span><br><span class="line"><span class="built_in">console</span>.log(a,b,c,d);<span class="comment">//8 16 10 10</span></span><br></pre></td></tr></table></figure>
+<p>2.当 a 为字符串:</p>
+<ul>
+<li>0x 开头默认为十六进制</li>
+<li>0 开头会默认为十进制</li>
+<li>数字开头提取未遇到非数字的字符前的数字转换为十进制</li>
+<li>字符开头会转成 NAN<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="built_in">parseInt</span>(<span class="string">'010'</span>),</span><br><span class="line">    b = <span class="built_in">parseInt</span>(<span class="string">'0x10'</span>),</span><br><span class="line">    c = <span class="built_in">parseInt</span>(<span class="string">'10'</span>),</span><br><span class="line">    d = <span class="built_in">parseInt</span>(<span class="string">'10.222'</span>),</span><br><span class="line">    e = <span class="built_in">parseInt</span>(<span class="string">'10xd'</span>),</span><br><span class="line">    f = <span class="built_in">parseInt</span>(<span class="string">'x10'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(a,b,c,d,e,f);<span class="comment">//10 16 10 10 10 NaN</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>另外提一下 parseFloat 针对字符串的转换只会当成十进制来转换。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="built_in">parseFloat</span>(<span class="string">"0x10"</span>));<span class="comment">//0</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="五、数值精确度"><a href="#五、数值精确度" class="headerlink" title="五、数值精确度"></a><strong>五、数值精确度</strong></h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span> + <span class="number">2</span>,</span><br><span class="line">    b = <span class="number">0.1</span> + <span class="number">0.2</span>;</span><br><span class="line"><span class="built_in">console</span>.log(a,b);</span><br></pre></td></tr></table></figure>
+<p>猜一下 a 与 b 输出是什么？</p>
+<p>3 0.3? 当然没那么简单，要不我也不会问了。答案是：3 0.30000000000000004<br>为什么？这不是 JavaScript 才有的问题，与 JS 语言本身无关，是因为计算机是用二进制来表示浮点数的，无法准确表示一个浮点数，只能逼近。</p>
+
+  </section>
+
+  
+  
+
+<section class="post-comments">
+
+    <div class="ds-thread" data-thread-key="2017/07/27/JavaScript 基础篇之注意点/"></div>
+
+    <script type="text/javascript">
+      var duoshuoQuery = {short_name:"letian"};
+      (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+        || document.getElementsByTagName('body')[0]).appendChild(ds);
+      })();
+    </script> 
+
+</section>
+
+
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright">&copy; 2014-2015. | 由<a href="https://hexo.io/">Hexo</a>强力驱动 | 主题<a href="https://github.com/someus/huno">Huno</a></span>
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript"> 
+        $(document).ready(function(){
+            MathJax.Hub.Config({ 
+                tex2jax: {inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']]} 
+            });
+        });
+    </script>
+
+
+    
+
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>
