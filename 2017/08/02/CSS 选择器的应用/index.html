@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      CSS 选择器的应用 | EyesiM&#39;s Blog 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="EyesiM">
+    
+    
+
+    <meta name="description" content=":empty:empty 选择器匹配没有子元素（包括文本节点）的每个元素。这里说的子元素，只计算元素结点及文本（包括空格），注释、运行指令不考虑在内。
+12345678910111213141516171819202122232425262728293031323334353637    &amp;lt;style&amp;gt;		html, body &amp;#123;			margin: 0;			paddin">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS 选择器的应用 | EyesiM's Blog">
+<meta property="og:url" content="http://yoursite.com/2017/08/02/CSS 选择器的应用/index.html">
+<meta property="og:site_name" content="EyesiM's Blog">
+<meta property="og:description" content=":empty:empty 选择器匹配没有子元素（包括文本节点）的每个元素。这里说的子元素，只计算元素结点及文本（包括空格），注释、运行指令不考虑在内。
+12345678910111213141516171819202122232425262728293031323334353637    &amp;lt;style&amp;gt;		html, body &amp;#123;			margin: 0;			paddin">
+<meta property="og:image" content="http://7xkopm.com1.z0.glb.clouddn.com/17-8-4/96237812.jpg">
+<meta property="og:image" content="http://7xkopm.com1.z0.glb.clouddn.com/17-8-4/99613375.jpg">
+<meta property="og:image" content="http://7xkopm.com1.z0.glb.clouddn.com/17-8-4/53253177.jpg">
+<meta property="og:image" content="http://7xkopm.com1.z0.glb.clouddn.com/17-8-4/89273615.jpg">
+<meta property="og:image" content="http://7xkopm.com1.z0.glb.clouddn.com/17-8-4/18613938.jpg">
+<meta property="og:image" content="http://7xkopm.com1.z0.glb.clouddn.com/17-8-4/53472115.jpg">
+<meta property="og:updated_time" content="2017-08-06T04:10:28.249Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CSS 选择器的应用 | EyesiM's Blog">
+<meta name="twitter:description" content=":empty:empty 选择器匹配没有子元素（包括文本节点）的每个元素。这里说的子元素，只计算元素结点及文本（包括空格），注释、运行指令不考虑在内。
+12345678910111213141516171819202122232425262728293031323334353637    &amp;lt;style&amp;gt;		html, body &amp;#123;			margin: 0;			paddin">
+<meta name="twitter:image" content="http://7xkopm.com1.z0.glb.clouddn.com/17-8-4/96237812.jpg">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/china-social-icon.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">EyesiM&#39;s Blog</a></h1>
+        <hr class="panel-cover__divider" />
+
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title="" class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title="" class="">关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title="" class="">归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+<nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+    
+      <!-- Github -->
+      <li class="navigation__item">
+        <a href="https://github.com/EyesiM" title="Huno on GitHub">
+          <i class='icon icon-social-github'></i>
+          <span class="label">GitHub</span>
+        </a>
+      </li>
+    
+
+    <!-- China social icon -->
+    <!--
+    
+      <li class="navigation__item">
+        <a href="" title="">
+          <i class='icon cs-icon-douban'></i>
+          <span class="label">Douban</span>
+        </a>
+      </li>
+
+      <li class="navigation__item">
+        <a href="" title="">
+          <i class='icon cs-icon-weibo'></i>
+          <span class="label">Weibo</span>
+        </a>
+      </li>
+
+    -->
+
+
+
+  </ul>
+</nav>
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">CSS 选择器的应用</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2017/08/02" class="post-meta__date date">2017/08/02</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+            <font class="categories">
+            &#8226; 分类:
+            <a class="categories-link" href="/categories/CSS/">CSS</a>
+            </font>
+          
+
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <hr>
+<p><strong>:empty</strong><br>:empty 选择器匹配没有子元素（包括文本节点）的每个元素。这里说的子元素，只计算元素结点及文本（包括空格），注释、运行指令不考虑在内。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span><br><span class="line">		html, body &#123;</span><br><span class="line">			margin: 0;</span><br><span class="line">			padding: 0;</span><br><span class="line">			width: 100%;</span><br><span class="line">			height: 100%;</span><br><span class="line">			overflow: hidden;</span><br><span class="line">		&#125;</span><br><span class="line">		input:empty &#123;</span><br><span class="line">			background: #ccc;</span><br><span class="line">		&#125; </span><br><span class="line">		div &#123;</span><br><span class="line">			margin: 20px;</span><br><span class="line">			width: 200px;</span><br><span class="line">	        height: 200px;</span><br><span class="line">	        background: #ddd;</span><br><span class="line">			overflow: hidden;</span><br><span class="line">		&#125;</span><br><span class="line">		div:empty &#123;</span><br><span class="line">	        background: #eee;</span><br><span class="line">	    &#125;</span><br><span class="line">	</span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span>&gt;</span>我是有文本内容的 div<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span>&gt;</span>	</span><br><span class="line">		<span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">			我是有子元素的 div</span><br><span class="line">			<span class="tag">&lt;<span class="name">li</span>&gt;</span>sadad<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">li</span>&gt;</span>asdsad<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">li</span>&gt;</span>asdad<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">li</span>&gt;</span>sads<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">li</span>&gt;</span>sdaas<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src="http://7xkopm.com1.z0.glb.clouddn.com/17-8-4/96237812.jpg" alt="例子图1"><br>如图所示，在子元素或者文本内容的时候，div 的背景颜色就会变成深灰色。<br><strong>:not()</strong><br>:not(selector) 选择器匹配非指定元素/选择器的每个元素。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">	<span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span><br><span class="line">		html, body &#123;</span><br><span class="line">			margin: 0;</span><br><span class="line">			padding: 0;</span><br><span class="line">			width: 100%;</span><br><span class="line">			height: 100%;</span><br><span class="line">			overflow: hidden;</span><br><span class="line">		&#125;</span><br><span class="line">		input:empty &#123;</span><br><span class="line">			background: #ccc;</span><br><span class="line">		&#125; </span><br><span class="line">		div &#123;</span><br><span class="line">			margin: 20px;</span><br><span class="line">			width: 200px;</span><br><span class="line">	        height: 200px;</span><br><span class="line">	        background: #ddd;</span><br><span class="line">			overflow: hidden;</span><br><span class="line">		&#125;</span><br><span class="line">		div:empty &#123;</span><br><span class="line">	        background: #eee;</span><br><span class="line">	    &#125;</span><br><span class="line">	    div :not(p) &#123;</span><br><span class="line">	    	color: #f00;</span><br><span class="line">	    &#125;</span><br><span class="line">	</span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span>&gt;</span>我是有文本内容的 div<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span>&gt;</span>	</span><br><span class="line">		<span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">			我是有子元素的 div</span><br><span class="line">			<span class="tag">&lt;<span class="name">li</span>&gt;</span>sadad<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">li</span>&gt;</span>asdsad<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">li</span>&gt;</span>asdad<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">li</span>&gt;</span>sads<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">li</span>&gt;</span>sdaas<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">p</span>&gt;</span>我是这个没有被选中的子元素 p 标签，我的字体颜色是黑色<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p><img src="http://7xkopm.com1.z0.glb.clouddn.com/17-8-4/99613375.jpg" alt="例子图2"><br>如上图所示，我们可以看到，div 下面的子元素中只有 p 标签的颜色是黑色，然后我们看一下我们的样式表里面的写法 : div :not(p)<br>这个什么意思？<br>这个表示的是 选中的元素是 div 下的非 p 子元素，所以 div 下的其他子元素就会被选中，只有 p 元素不会被选中，结果就如我们图示那样。<br><strong>::before 与 ::after</strong><br>::before 会为当前元素创建一个子元素作为伪元素。常通过 content 属性来为一个元素添加修饰性的内容。 此元素默认为行内元素。<br>那应该怎么使用？<br>我们来上一下例子：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">	<span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span><br><span class="line">		html, body &#123;</span><br><span class="line">			margin: 0;</span><br><span class="line">			padding: 0;</span><br><span class="line">			width: 100%;</span><br><span class="line">			height: 100%;</span><br><span class="line">			overflow: hidden;</span><br><span class="line">		&#125;</span><br><span class="line">		p &#123;</span><br><span class="line">			margin: 20px;</span><br><span class="line">		&#125;</span><br><span class="line">		p::before &#123;</span><br><span class="line">			content: "“";</span><br><span class="line">			color: #f00;</span><br><span class="line">			font-size: 32px;</span><br><span class="line">		&#125;</span><br><span class="line">		p::after &#123;</span><br><span class="line">			content: "”";</span><br><span class="line">			color: #f00;</span><br><span class="line">			font-size: 32px;</span><br><span class="line">		&#125;</span><br><span class="line">	</span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">p</span>&gt;</span>测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p><img src="http://7xkopm.com1.z0.glb.clouddn.com/17-8-4/53253177.jpg" alt="例子图3"><br>例子出来的效果如图所示，::before 和 ::after 伪元素可以帮助我们在元素前后增加自己想要的东西，你可以把它当作一个元素来使用，可以给它设置宽高、内容、字体、背景甚至动画等等。但是要注意一点，其他属性你可以不设，但是 content 属性是必须要有的，没有它，::before 和 ::after 伪元素等于无效。<br>下面我们继续看两幅图：<br><img src="http://7xkopm.com1.z0.glb.clouddn.com/17-8-4/89273615.jpg" alt="before"><br><img src="http://7xkopm.com1.z0.glb.clouddn.com/17-8-4/18613938.jpg" alt="after"><br>在图中，我们可以看到，::before 与 ::after 表现为行内元素，并且 p 元素的大小并包括了它，就如同 p 标签下的子元素一样，但是与 p 标签的真正的子元素不一样的是：你在 HTML 源代码里面找不到它的存在，但是它又确确实实地展示在页面上，所以，它叫伪元素。<br>说到 ::before 你可能还会想到另一个写法–&gt; :before<br>这里一个双引号的写法与一个单引号的写法有什么不同？<br>我之前没留意到这个写法，一直用的是单引号，看到双引号的出现的时候，开始怀疑以前是不是写错了？<br>查了资料发现，原来单引号的写法是 CSS2 标准里面的，到了 CSS3 ， CSS3 为了将伪类与伪元素区分开来，就将 :before 修改成了 ::before ，实际上你写 :before 与 ::before ，绝大部分的浏览器都能识别，但是要注意 IE8 只支持 :before 的写法，如果你的老大告诉你要兼容到 IE8 ，那你就得使用 :before 的写法了。</p>
+<p><strong>应用：</strong></p>
+<p>在项目中看到 div 被设为可编辑的这种写法被大量地应用，当前有个别的需求想要给该 div 增加类似于 input 框的 placeholder 的功能，如果不考虑语义化的情况下，在此基础上给 div 增加 placeholder 的功能，我们可以怎么做呢？这里说到了 :empty 与 ::before() 选择器，我们可以尝试用起来：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">	<span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"></span><br><span class="line">		<span class="selector-tag">div</span> &#123;</span><br><span class="line">			<span class="attribute">padding</span>: <span class="number">10px</span>;</span><br><span class="line">			<span class="attribute">width</span>: <span class="number">300px</span>;</span><br><span class="line">			<span class="attribute">height</span>: <span class="number">100px</span>;	</span><br><span class="line">			<span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#000</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="selector-attr">[contenteditable="true"]</span><span class="selector-pseudo">:empty</span><span class="selector-pseudo">::before</span> &#123;</span><br><span class="line">			<span class="attribute">content</span>: <span class="string">"请输入文字"</span>;</span><br><span class="line">			<span class="attribute">color</span>: darkgrey;</span><br><span class="line">		&#125;</span><br><span class="line">	</span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">contenteditable</span>=<span class="string">"true"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src="http://7xkopm.com1.z0.glb.clouddn.com/17-8-4/53472115.jpg" alt="例子图4"></p>
+
+  </section>
+
+  
+  
+
+<section class="post-comments">
+
+    <div class="ds-thread" data-thread-key="2017/08/02/CSS 选择器的应用/"></div>
+
+    <script type="text/javascript">
+      var duoshuoQuery = {short_name:"letian"};
+      (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+        || document.getElementsByTagName('body')[0]).appendChild(ds);
+      })();
+    </script> 
+
+</section>
+
+
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright">&copy; 2014-2015. | 由<a href="https://hexo.io/">Hexo</a>强力驱动 | 主题<a href="https://github.com/someus/huno">Huno</a></span>
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript"> 
+        $(document).ready(function(){
+            MathJax.Hub.Config({ 
+                tex2jax: {inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']]} 
+            });
+        });
+    </script>
+
+
+    
+
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>

@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      gulp 自动化生成雪碧图并压缩 | EyesiM&#39;s Blog 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="EyesiM">
+    
+    
+
+    <meta name="description" content="参考：雪碧图生产： https://github.com/twolfson/gulp.spritesmith
+图片压缩： https://github.com/sindresorhus/gulp-imagemin
+
+之前只是听说构建工具可以干这个活，不需要我们再去制作出雪碧图，但在项目中没有用过，然后这两天看了一下前辈在用，挺好奇就尝试了一下，参考了一下前人的意见，决定选用的是 gulp.spr">
+<meta property="og:type" content="article">
+<meta property="og:title" content="gulp 自动化生成雪碧图并压缩 | EyesiM's Blog">
+<meta property="og:url" content="http://yoursite.com/2017/08/04/gulp 自动化生成雪碧图并压缩/index.html">
+<meta property="og:site_name" content="EyesiM's Blog">
+<meta property="og:description" content="参考：雪碧图生产： https://github.com/twolfson/gulp.spritesmith
+图片压缩： https://github.com/sindresorhus/gulp-imagemin
+
+之前只是听说构建工具可以干这个活，不需要我们再去制作出雪碧图，但在项目中没有用过，然后这两天看了一下前辈在用，挺好奇就尝试了一下，参考了一下前人的意见，决定选用的是 gulp.spr">
+<meta property="og:image" content="http://7xkopm.com1.z0.glb.clouddn.com/17-8-4/3815892.jpg">
+<meta property="og:image" content="http://7xkopm.com1.z0.glb.clouddn.com/17-8-4/37646810.jpg">
+<meta property="og:image" content="http://i4.eiimg.com/1949/2192465a1cc15b9b.png">
+<meta property="og:image" content="http://7xkopm.com1.z0.glb.clouddn.com/17-8-4/32264152.jpg">
+<meta property="og:image" content="http://7xkopm.com1.z0.glb.clouddn.com/17-8-4/32827256.jpg">
+<meta property="og:image" content="http://7xkopm.com1.z0.glb.clouddn.com/17-8-4/93140157.jpg">
+<meta property="og:image" content="http://7xkopm.com1.z0.glb.clouddn.com/17-8-4/24556169.jpg">
+<meta property="og:image" content="http://7xkopm.com1.z0.glb.clouddn.com/17-8-4/52491503.jpg">
+<meta property="og:image" content="http://7xkopm.com1.z0.glb.clouddn.com/17-8-4/65721013.jpg">
+<meta property="og:image" content="http://7xkopm.com1.z0.glb.clouddn.com/17-8-4/85006884.jpg">
+<meta property="og:image" content="http://7xkopm.com1.z0.glb.clouddn.com/17-8-4/43200159.jpg">
+<meta property="og:image" content="http://7xkopm.com1.z0.glb.clouddn.com/17-8-4/32251540.jpg">
+<meta property="og:updated_time" content="2017-08-06T04:17:06.023Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="gulp 自动化生成雪碧图并压缩 | EyesiM's Blog">
+<meta name="twitter:description" content="参考：雪碧图生产： https://github.com/twolfson/gulp.spritesmith
+图片压缩： https://github.com/sindresorhus/gulp-imagemin
+
+之前只是听说构建工具可以干这个活，不需要我们再去制作出雪碧图，但在项目中没有用过，然后这两天看了一下前辈在用，挺好奇就尝试了一下，参考了一下前人的意见，决定选用的是 gulp.spr">
+<meta name="twitter:image" content="http://7xkopm.com1.z0.glb.clouddn.com/17-8-4/3815892.jpg">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/china-social-icon.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">EyesiM&#39;s Blog</a></h1>
+        <hr class="panel-cover__divider" />
+
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title="" class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title="" class="">关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title="" class="">归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+<nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+    
+      <!-- Github -->
+      <li class="navigation__item">
+        <a href="https://github.com/EyesiM" title="Huno on GitHub">
+          <i class='icon icon-social-github'></i>
+          <span class="label">GitHub</span>
+        </a>
+      </li>
+    
+
+    <!-- China social icon -->
+    <!--
+    
+      <li class="navigation__item">
+        <a href="" title="">
+          <i class='icon cs-icon-douban'></i>
+          <span class="label">Douban</span>
+        </a>
+      </li>
+
+      <li class="navigation__item">
+        <a href="" title="">
+          <i class='icon cs-icon-weibo'></i>
+          <span class="label">Weibo</span>
+        </a>
+      </li>
+
+    -->
+
+
+
+  </ul>
+</nav>
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">gulp 自动化生成雪碧图并压缩</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2017/08/04" class="post-meta__date date">2017/08/04</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+            <font class="categories">
+            &#8226; 分类:
+            <a class="categories-link" href="/categories/构建工具/">构建工具</a>
+            </font>
+          
+
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <hr>
+<p>参考：<br>雪碧图生产： <a href="https://github.com/twolfson/gulp.spritesmith" target="_blank" rel="external">https://github.com/twolfson/gulp.spritesmith</a></p>
+<p>图片压缩： <a href="https://github.com/sindresorhus/gulp-imagemin" target="_blank" rel="external">https://github.com/sindresorhus/gulp-imagemin</a></p>
+<hr>
+<p>之前只是听说构建工具可以干这个活，不需要我们再去制作出雪碧图，但在项目中没有用过，然后这两天看了一下前辈在用，挺好奇就尝试了一下，参考了一下前人的意见，决定选用的是 gulp.spritesmith，图片压缩选用的是 gulp-imagemin ，这个插件能够帮我们压缩 PNG, JPEG, GIF 以及 SVG 文件。</p>
+<p>1.创建项目、安装依赖<br>packge.json 文件：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"name"</span>: <span class="string">"test_for_sprite"</span>,</span><br><span class="line">  <span class="attr">"version"</span>: <span class="string">"1.0.0"</span>,</span><br><span class="line">  <span class="attr">"description"</span>: <span class="string">"gulp sprite"</span>,</span><br><span class="line">  <span class="attr">"main"</span>: <span class="string">"index.js"</span>,</span><br><span class="line">  <span class="attr">"scripts"</span>: &#123;</span><br><span class="line">    <span class="attr">"test"</span>: <span class="string">"echo \"Error: no test specified\" &amp;&amp; exit 1"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"author"</span>: <span class="string">"eyesim"</span>,</span><br><span class="line">  <span class="attr">"license"</span>: <span class="string">"ISC"</span>,</span><br><span class="line">  <span class="attr">"devDependencies"</span>: &#123;</span><br><span class="line">    <span class="attr">"gulp"</span>: <span class="string">"^3.9.1"</span>,</span><br><span class="line">    <span class="attr">"gulp-imagemin"</span>: <span class="string">"^3.3.0"</span>,</span><br><span class="line">    <span class="attr">"gulp-sass"</span>: <span class="string">"^3.1.0"</span>,</span><br><span class="line">    <span class="attr">"gulp.spritesmith"</span>: <span class="string">"^6.5.1"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>命令行： npm install</p>
+<p>2.创建 gulpfile.js 文件<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">'gulp'</span>),</span><br><span class="line">	spritesmith = <span class="built_in">require</span>(<span class="string">'gulp.spritesmith'</span>);</span><br><span class="line"></span><br><span class="line">gulp.task(<span class="string">'sprite'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> spriteData = gulp.src(<span class="string">'src/images/*.png'</span>).pipe(spritesmith(&#123;</span><br><span class="line">		imgName: <span class="string">'sprite.png'</span>,</span><br><span class="line">		cssName: <span class="string">'sprite.css'</span></span><br><span class="line">	&#125;));</span><br><span class="line">	<span class="keyword">return</span> spriteData.pipe(gulp.dest(<span class="string">'static'</span>));</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>尝试执行 gulp sprite 命令:<br>可以看到多了一个 static 文件夹，里面有生成的 sprite.png 与 scripte.css 文件：<br><img src="http://7xkopm.com1.z0.glb.clouddn.com/17-8-4/3815892.jpg" alt="static 文件夹"><br>处理前的图片（这里面的图片均来自 iconpng.com ，如有侵犯，实属无意，可撤）:<br><img src="http://7xkopm.com1.z0.glb.clouddn.com/17-8-4/37646810.jpg" alt="处理前的图片"><br>处理后的 sprite 图（sprite.png）：<br><img src="http://i4.eiimg.com/1949/2192465a1cc15b9b.png" alt="处理后的 sprite 图"><br>处理后的生成的 CSS 文件（sprite.css）：<br><img src="http://7xkopm.com1.z0.glb.clouddn.com/17-8-4/32264152.jpg" alt="处理后的生成的 CSS 文件"><br>我们可以看到，gulp.spritesmith，已经帮我们取好每一幅图的位置，也就是生产出的雪碧图不需要我们手动去调去计算位置，生产时已经一并把样式给生产了。<br>3.那用上 SASS ，应该怎样的呢？<br>我们在原基础上面增加了 cssFormat 的配置，cssFormat 有什么用呢，它的用处是指定输出样式表的格式，默认为 css，它的设置会在我们指定的文件里面以设置好的格式生产出样式。我们来试一下:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">'gulp'</span>),</span><br><span class="line">	spritesmith = <span class="built_in">require</span>(<span class="string">'gulp.spritesmith'</span>);</span><br><span class="line"></span><br><span class="line">gulp.task(<span class="string">'sprite'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> spriteData = gulp.src(<span class="string">'src/images/*.png'</span>).pipe(spritesmith(&#123;</span><br><span class="line">		imgName: <span class="string">'sprite.png'</span>,</span><br><span class="line">		cssName: <span class="string">'sprite.css'</span>,</span><br><span class="line">		cssFormat: <span class="string">'scss'</span></span><br><span class="line">	&#125;));</span><br><span class="line">	<span class="keyword">return</span> spriteData.pipe(gulp.dest(<span class="string">'src/static'</span>));</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>运行一下 gulp sprite:<br><img src="http://7xkopm.com1.z0.glb.clouddn.com/17-8-4/32827256.jpg" alt="gulpSprite"><br>我们来看看我们的生产的文件：<br><img src="http://7xkopm.com1.z0.glb.clouddn.com/17-8-4/93140157.jpg" alt="cssFomat"><br>我们可以看到，文件名虽然是 .css 但里面的内容是 scss 的语法。<br>我们继续我们使用一下 SCSS，修改输出文件为 sprite.scss ，跑一遍：<br><img src="http://7xkopm.com1.z0.glb.clouddn.com/17-8-4/24556169.jpg" alt="scssSprite"><br>可以看到生产出的是 SCSS 的语法代码。<br>我们可以在我们的项目中引入它：<br><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//抽取部分生产出的 sprite.scss 文件的内容出来：</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="variable">$mushrooms-name</span>: <span class="string">'mushrooms'</span>;</span><br><span class="line"><span class="variable">$mushrooms-x</span>: <span class="number">0px</span>;</span><br><span class="line"><span class="variable">$mushrooms-y</span>: <span class="number">0px</span>;</span><br><span class="line"><span class="variable">$mushrooms-offset-x</span>: <span class="number">0px</span>;</span><br><span class="line"><span class="variable">$mushrooms-offset-y</span>: <span class="number">0px</span>;</span><br><span class="line"><span class="variable">$mushrooms-width</span>: <span class="number">512px</span>;</span><br><span class="line"><span class="variable">$mushrooms-height</span>: <span class="number">512px</span>;</span><br><span class="line"><span class="variable">$mushrooms-total-width</span>: <span class="number">1024px</span>;</span><br><span class="line"><span class="variable">$mushrooms-total-height</span>: <span class="number">1024px</span>;</span><br><span class="line"><span class="variable">$mushrooms-image</span>: <span class="string">'sprite.png'</span>;</span><br><span class="line"><span class="variable">$mushrooms</span>: (<span class="number">0px</span>, <span class="number">0px</span>, <span class="number">0px</span>, <span class="number">0px</span>, <span class="number">512px</span>, <span class="number">512px</span>, <span class="number">1024px</span>, <span class="number">1024px</span>, <span class="string">'sprite.png'</span>, <span class="string">'mushrooms'</span>, );</span><br><span class="line">...</span><br><span class="line"><span class="variable">$spritesheet-width</span>: <span class="number">1024px</span>;</span><br><span class="line"><span class="variable">$spritesheet-height</span>: <span class="number">1024px</span>;</span><br><span class="line"><span class="variable">$spritesheet-image</span>: <span class="string">'sprite.png'</span>;</span><br><span class="line"><span class="variable">$spritesheet-sprites</span>: (<span class="variable">$mushrooms</span>, <span class="variable">$pieceofcake</span>, <span class="variable">$skewer</span>, <span class="variable">$tray</span>, );</span><br><span class="line"><span class="variable">$spritesheet</span>: (<span class="number">1024px</span>, <span class="number">1024px</span>, <span class="string">'sprite.png'</span>, <span class="variable">$spritesheet-sprites</span>, );</span><br><span class="line">...</span><br><span class="line">@<span class="keyword">mixin</span> sprite-width(<span class="variable">$sprite</span>) &#123;</span><br><span class="line">  <span class="attribute">width</span>: nth(<span class="variable">$sprite</span>, <span class="number">5</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@<span class="keyword">mixin</span> sprite-height(<span class="variable">$sprite</span>) &#123;</span><br><span class="line">  <span class="attribute">height</span>: nth(<span class="variable">$sprite</span>, <span class="number">6</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@<span class="keyword">mixin</span> sprite-position(<span class="variable">$sprite</span>) &#123;</span><br><span class="line">  <span class="variable">$sprite-offset-x</span>: nth(<span class="variable">$sprite</span>, <span class="number">3</span>);</span><br><span class="line">  <span class="variable">$sprite-offset-y</span>: nth(<span class="variable">$sprite</span>, <span class="number">4</span>);</span><br><span class="line">  <span class="attribute">background-position</span>: <span class="variable">$sprite-offset-x</span>  <span class="variable">$sprite-offset-y</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@<span class="keyword">mixin</span> sprite-image(<span class="variable">$sprite</span>) &#123;</span><br><span class="line">  <span class="variable">$sprite-image</span>: nth(<span class="variable">$sprite</span>, <span class="number">9</span>);</span><br><span class="line">  <span class="attribute">background-image</span>: url(#&#123;<span class="variable">$sprite-image</span>&#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@<span class="keyword">mixin</span> sprite(<span class="variable">$sprite</span>) &#123;</span><br><span class="line">  @<span class="keyword">include</span> sprite-image(<span class="variable">$sprite</span>);</span><br><span class="line">  @<span class="keyword">include</span> sprite-position(<span class="variable">$sprite</span>);</span><br><span class="line">  @<span class="keyword">include</span> sprite-width(<span class="variable">$sprite</span>);</span><br><span class="line">  @<span class="keyword">include</span> sprite-height(<span class="variable">$sprite</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// The `sprites` mixin generates identical output to the CSS template</span></span><br><span class="line"><span class="comment">//   but can be overridden inside of SCSS</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">// @include sprites($spritesheet-sprites);</span></span><br><span class="line">@<span class="keyword">mixin</span> sprites(<span class="variable">$sprites</span>) &#123;</span><br><span class="line">  @<span class="keyword">each</span> <span class="variable">$sprite</span> in <span class="variable">$sprites</span> &#123;</span><br><span class="line">    <span class="variable">$sprite-name</span>: nth(<span class="variable">$sprite</span>, <span class="number">10</span>);</span><br><span class="line">    .#&#123;<span class="variable">$sprite-name</span>&#125; &#123;</span><br><span class="line">      @<span class="keyword">include</span> sprite(<span class="variable">$sprite</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>我们可以看到，生产出的 sprite.scss ，给我们写好了图片对应的样式，还给我们定义了相关的模块，所以我们在给元素节点添加样式时就可以这么写：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//SCSS</span></span><br><span class="line">    @<span class="keyword">import</span> <span class="string">"../static/sprite.scss"</span>;</span><br><span class="line"></span><br><span class="line">    .mushroom &#123;</span><br><span class="line">        @include sprite($mushrooms);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">//HTML</span></span><br><span class="line">    &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"mushroom"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br></pre></td></tr></table></figure></p>
+<p><img src="http://7xkopm.com1.z0.glb.clouddn.com/17-8-4/52491503.jpg" alt="效果图"></p>
+<p>4.最后运用压缩 gulp-imagemin<br>在压缩前，我们先看看，图片的大小：</p>
+<p>未生产出 sprite 前：<br><img src="http://7xkopm.com1.z0.glb.clouddn.com/17-8-4/65721013.jpg" alt="allPhoto"><br>生产出的 sprite.png:<br><img src="http://7xkopm.com1.z0.glb.clouddn.com/17-8-4/85006884.jpg" alt="sprite.png"></p>
+<p>我们可以看到，为生产前的图片大小加起来 100KB 左右，但制作成雪碧图后，大小却比原来的要大，我们都知道，利用雪碧图可以优化 HTTP 请求，减小 HTTP 请求数量，但雪碧图有一个弊端就是，假若你的雪碧图大小过大，即使减小了请求的数量，请求时间过长也是得不偿失。<br>我们这里可以借用工具对雪碧图进行压缩：</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">gulp.task(<span class="symbol">'sprite</span>:minify', function() &#123;</span><br><span class="line">  <span class="keyword">return</span> gulp.src(<span class="symbol">'src</span>/<span class="keyword">static</span>' + '<span class="comment">/**/</span>*.+(png<span class="params">|jpg|</span>jpeg<span class="params">|gif|</span>svg)')</span><br><span class="line">  .pipe(imagemin(&#123;</span><br><span class="line">      interlaced: <span class="literal">true</span>,</span><br><span class="line">    &#125;))</span><br><span class="line">  .pipe(gulp.dest(<span class="symbol">'src</span>/<span class="keyword">static</span>'))</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p><img src="http://7xkopm.com1.z0.glb.clouddn.com/17-8-4/43200159.jpg" alt="minify"><br>来看看压缩后的文件大小:<br><img src="http://7xkopm.com1.z0.glb.clouddn.com/17-8-4/32251540.jpg" alt=""><br>如图所见，差不多少了 40KB.</p>
+<p>为了方便管理，最终我的 gulpfile.js 的代码是这样的：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">'gulp'</span>),</span><br><span class="line">	spritesmith = <span class="built_in">require</span>(<span class="string">'gulp.spritesmith'</span>),</span><br><span class="line">	imagemin = <span class="built_in">require</span>(<span class="string">'gulp-imagemin'</span>),</span><br><span class="line">	runSequence = <span class="built_in">require</span>(<span class="string">'run-sequence'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> config = &#123;</span><br><span class="line">	<span class="comment">//原图片地址</span></span><br><span class="line">	spriteSource: <span class="string">'src/images/'</span>,</span><br><span class="line">	<span class="comment">//生产成的雪碧图存放地址</span></span><br><span class="line">	spriteSavePath: <span class="string">'src/static'</span>,</span><br><span class="line">	spriteConfig: &#123;</span><br><span class="line">		imgName: <span class="string">'sprite.png'</span>,<span class="comment">// 存放生产图片的文件名</span></span><br><span class="line">		cssName: <span class="string">'sprite.scss'</span>,<span class="comment">//存放生产图片对应的样式表，这里选用的是 SCSS</span></span><br><span class="line">		cssFormat: <span class="string">'scss'</span>,<span class="comment">//存放样式表的格式，这里写的是 scss 文件， 不填默认为 css 格式</span></span><br><span class="line">		imgPath: <span class="string">'src/images'</span>,<span class="comment">//可选选项，CSS 中引用图片的路径</span></span><br><span class="line">		padding: <span class="number">0</span>,<span class="comment">// 表示生产出的雪碧图中图片的间隔像素，默认是 0</span></span><br><span class="line">		algorithm: <span class="string">'binary-tree'</span>,<span class="comment">//定义打包成雪碧图的打包方式，默认是 binary-tree,还有:top-down、left-right、diagonal、alt-diagonal	</span></span><br><span class="line">		algorithmOpts: &#123;</span><br><span class="line">			sort: <span class="literal">true</span><span class="comment">//默认是 true</span></span><br><span class="line">		&#125;,<span class="comment">//这里的配置是针对上面的 algorithm 做配置</span></span><br><span class="line">		engine: <span class="string">'pixelsmith'</span>,<span class="comment">//对生产雪碧图图片的引擎的选用，默认选用 pixelsmith,其他的引擎例如 phantomjssmith、canvassmith、gmsmith 等需要 npm install 才可使用</span></span><br><span class="line">		engineOpts: &#123;</span><br><span class="line">			<span class="comment">// phantomjssmith 可接受超时的设置</span></span><br><span class="line">			<span class="comment">// timeout: 10000</span></span><br><span class="line">		&#125;,<span class="comment">//这里的配置是针对上面的 engine 做配置</span></span><br><span class="line">		imgOpts: &#123;</span><br><span class="line">			<span class="comment">// gmsmith 支持对图片质量的配置</span></span><br><span class="line">			<span class="comment">// quality: 75</span></span><br><span class="line">		&#125;,</span><br><span class="line">		cssTemplate: <span class="string">''</span>,<span class="comment">//spritesmith 支持 css 模版，例如 scss.template.mustache 等，但这里的例子不打算使用</span></span><br><span class="line">		cssHandlebarsHelpers: &#123;</span><br><span class="line">			<span class="comment">// half: function (num) &#123;</span></span><br><span class="line">				<span class="comment">// return num/2; </span></span><br><span class="line">			<span class="comment">// &#125;</span></span><br><span class="line">		&#125;,<span class="comment">//可以用于对 cssTemplate 的配置</span></span><br><span class="line">		cssVarMap: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">		&#125;,<span class="comment">//这是一个可以设置每个文件名到 CSS 变量的映射函数</span></span><br><span class="line">		cssSpritesheetName: <span class="string">''</span>,</span><br><span class="line">		cssOpts: &#123;</span><br><span class="line">			<span class="comment">//例如设置跳过 mixin 的输出</span></span><br><span class="line">			<span class="comment">//functions: false</span></span><br><span class="line">		&#125;<span class="comment">//这里可以对 CSS 模版的设置</span></span><br><span class="line">	&#125;,</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//生产雪碧图</span></span><br><span class="line">gulp.task(<span class="string">'sprite:images'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> spriteData = gulp.src( config.spriteSource + <span class="string">'*.+(png|jpg|jpeg|gif|svg)'</span>)</span><br><span class="line">	.pipe(spritesmith(config.spriteConfig));</span><br><span class="line">	<span class="keyword">return</span> spriteData.pipe(gulp.dest(config.spriteSavePath));</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//压缩</span></span><br><span class="line">gulp.task(<span class="string">'sprite:minify'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> gulp.src(config.spriteSavePath + <span class="string">'/**/*.+(png|jpg|jpeg|gif|svg)'</span>)</span><br><span class="line">  .pipe(imagemin(&#123;</span><br><span class="line">      interlaced: <span class="literal">true</span>,</span><br><span class="line">    &#125;))</span><br><span class="line">  .pipe(gulp.dest(config.spriteSavePath))</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">gulp.task(<span class="string">'sprite'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	runSequence(</span><br><span class="line">		<span class="string">'sprite:images'</span>,</span><br><span class="line">		<span class="string">'sprite:minify'</span></span><br><span class="line">	)<span class="comment">//使用同步插件使任务按顺序执行</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>具体代码可以参考我的 git 仓库：<br><a href="https://github.com/EyesiM/gulp.Spritesmith_Try" target="_blank" rel="external">https://github.com/EyesiM/gulp.Spritesmith_Try</a></p>
+
+  </section>
+
+  
+  
+
+<section class="post-comments">
+
+    <div class="ds-thread" data-thread-key="2017/08/04/gulp 自动化生成雪碧图并压缩/"></div>
+
+    <script type="text/javascript">
+      var duoshuoQuery = {short_name:"letian"};
+      (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+        || document.getElementsByTagName('body')[0]).appendChild(ds);
+      })();
+    </script> 
+
+</section>
+
+
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright">&copy; 2014-2015. | 由<a href="https://hexo.io/">Hexo</a>强力驱动 | 主题<a href="https://github.com/someus/huno">Huno</a></span>
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript"> 
+        $(document).ready(function(){
+            MathJax.Hub.Config({ 
+                tex2jax: {inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']]} 
+            });
+        });
+    </script>
+
+
+    
+
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>

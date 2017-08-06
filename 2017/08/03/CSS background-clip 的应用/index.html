@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      CSS background-clip 的应用 | EyesiM&#39;s Blog 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="EyesiM">
+    
+    
+
+    <meta name="description" content="background-clip 是什么background-clip 是 css3 出的一个属性，表示背景在盒子模型中显示的范围，一共有三个值：
+
+border-box: 指背景显示的范围至边框包括边框 border
+padding-box: 指背景显示的范围至内边距包括内边距 padding
+content-box:  指背景显示的范围至内容区包括内容区 content
+
+兼容性参考 MDN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS background-clip 的应用 | EyesiM's Blog">
+<meta property="og:url" content="http://yoursite.com/2017/08/03/CSS background-clip 的应用/index.html">
+<meta property="og:site_name" content="EyesiM's Blog">
+<meta property="og:description" content="background-clip 是什么background-clip 是 css3 出的一个属性，表示背景在盒子模型中显示的范围，一共有三个值：
+
+border-box: 指背景显示的范围至边框包括边框 border
+padding-box: 指背景显示的范围至内边距包括内边距 padding
+content-box:  指背景显示的范围至内容区包括内容区 content
+
+兼容性参考 MDN">
+<meta property="og:image" content="http://7xkopm.com1.z0.glb.clouddn.com/17-8-4/68293675.jpg">
+<meta property="og:image" content="http://7xkopm.com1.z0.glb.clouddn.com/webwxgetmsgimg%20%285%29.jpg">
+<meta property="og:updated_time" content="2017-08-06T04:17:47.629Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CSS background-clip 的应用 | EyesiM's Blog">
+<meta name="twitter:description" content="background-clip 是什么background-clip 是 css3 出的一个属性，表示背景在盒子模型中显示的范围，一共有三个值：
+
+border-box: 指背景显示的范围至边框包括边框 border
+padding-box: 指背景显示的范围至内边距包括内边距 padding
+content-box:  指背景显示的范围至内容区包括内容区 content
+
+兼容性参考 MDN">
+<meta name="twitter:image" content="http://7xkopm.com1.z0.glb.clouddn.com/17-8-4/68293675.jpg">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/china-social-icon.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">EyesiM&#39;s Blog</a></h1>
+        <hr class="panel-cover__divider" />
+
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title="" class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title="" class="">关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title="" class="">归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+<nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+    
+      <!-- Github -->
+      <li class="navigation__item">
+        <a href="https://github.com/EyesiM" title="Huno on GitHub">
+          <i class='icon icon-social-github'></i>
+          <span class="label">GitHub</span>
+        </a>
+      </li>
+    
+
+    <!-- China social icon -->
+    <!--
+    
+      <li class="navigation__item">
+        <a href="" title="">
+          <i class='icon cs-icon-douban'></i>
+          <span class="label">Douban</span>
+        </a>
+      </li>
+
+      <li class="navigation__item">
+        <a href="" title="">
+          <i class='icon cs-icon-weibo'></i>
+          <span class="label">Weibo</span>
+        </a>
+      </li>
+
+    -->
+
+
+
+  </ul>
+</nav>
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">CSS background-clip 的应用</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2017/08/03" class="post-meta__date date">2017/08/03</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+            <font class="categories">
+            &#8226; 分类:
+            <a class="categories-link" href="/categories/CSS/">CSS</a>
+            </font>
+          
+
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <hr>
+<h4 id="background-clip-是什么"><a href="#background-clip-是什么" class="headerlink" title="background-clip 是什么"></a><strong>background-clip 是什么</strong></h4><p>background-clip 是 css3 出的一个属性，表示背景在盒子模型中显示的范围，一共有三个值：</p>
+<ul>
+<li><strong>border-box:</strong> 指背景显示的范围至边框包括边框 border</li>
+<li><strong>padding-box:</strong> 指背景显示的范围至内边距包括内边距 padding</li>
+<li><strong>content-box:</strong>  指背景显示的范围至内容区包括内容区 content</li>
+</ul>
+<p>兼容性参考 MDN ： <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/background-clip" target="_blank" rel="external">https://developer.mozilla.org/zh-CN/docs/Web/CSS/background-clip</a></p>
+<h4 id="background-clip-应用"><a href="#background-clip-应用" class="headerlink" title="background-clip 应用"></a><strong>background-clip 应用</strong></h4><p>1.固定元素的间隔要求剩下的元素自适应宽度,并贴边父元素应该怎么做呢？</p>
+<pre><code>![设计师给你这样一幅图](http://7xkopm.com1.z0.glb.clouddn.com/17-8-4/64364025.jpg)
+之前和小伙伴讨论实现完的时候只记得 background-clip 、box-sizing 以及 父元素 overflow 是关键，但后来怎么实现忘记了。实际上还有一个是关键 magin 可以取负值!
+废话不多说，上代码：
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"></span><br><span class="line">		<span class="selector-tag">html</span>, <span class="selector-tag">body</span> &#123;</span><br><span class="line">			<span class="attribute">margin</span>: <span class="number">0</span>;</span><br><span class="line">			<span class="attribute">padding</span>: <span class="number">0</span>;</span><br><span class="line">			<span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">			<span class="attribute">height</span>: <span class="number">100%</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="selector-class">.father</span> &#123;</span><br><span class="line">			<span class="attribute">margin-left</span>: -<span class="number">10px</span>;</span><br><span class="line">			<span class="attribute">height</span>: <span class="number">200px</span>;</span><br><span class="line">			<span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#ddd</span>;</span><br><span class="line">			<span class="attribute">overflow</span>: hidden;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="selector-class">.child</span> &#123;</span><br><span class="line">			<span class="attribute">box-sizing</span>: border-box;</span><br><span class="line">			<span class="attribute">padding-left</span>: <span class="number">10px</span>;</span><br><span class="line">		    <span class="attribute">float</span>: left;</span><br><span class="line">		    <span class="attribute">width</span>: <span class="number">33.33%</span>;</span><br><span class="line">		    <span class="attribute">height</span>: <span class="number">100%</span>;</span><br><span class="line">		    <span class="attribute">background</span>: <span class="number">#4597d7</span>;</span><br><span class="line">		    <span class="attribute">background-clip</span>: content-box;</span><br><span class="line">		&#125;</span><br><span class="line">	</span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"father"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"child"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"child"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"child"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</code></pre><p>看这段代码之前，我们还要了解一下 box-sizing。<br>我们都知道盒子模型有两种表现的方式，一种是标准模式，另一种是怪异模式， 根据浏览器的不同显示不一样，那与我们现在要说的 box-sizing 有什么关系呢？实际上我们也可以通过设置 box-sizing 的值让盒子以标准模式还是怪异模式来表现，box-sizing 默认值为 content-box ，意思就是默认是 标准模式，width 只包括 content 区，但设置为 border-box 的时候，就默认为 IE 的怪异模式，width 就会包括 content、padding 以及 border。<br>我们在这里设置 box-sizing 为 border-box 是为了将 div 三等分，然后利用 backgroud-clip：content-box，让背景只处于内容区，然后再利用 padding 处理元素与元素间的间隔，最后再利用父元素的 overflow 以及 margin-left 为负值的属性，将三个元素包含在了同一行。到这里就完成了。<br><img src="http://7xkopm.com1.z0.glb.clouddn.com/17-8-4/68293675.jpg" alt="展示图"><br>该方法还是有很多限制，不好在于元素与元素间的间隔语义化上来说应使用 margin ，这里已经用 padding 代替，会导致下面有很多限制。如果有更好的方法，欢迎交流。<br>2.环球<br>当设计师给你这样的一个设计图，而且要求，边上的圆圈还要围绕着转，那你如果用一个 应该怎么做？<br>说一下我实现的思路，怎么写一个环球出来？<br>background-clip 既然能够使盒子选择自身背景显示的范围，那么我们来看设计图，先忽略边上的小圆，最外圆我们把它当成盒子的 border,那么里面实心的圆可以当成是盒子的 content ，那中间留白是 padding 那，那么我们可以选用 background-clip: content-box;　让蓝色的背景只停留在 content　区，那么 padding 区就是默认的白色了，然后　border 再选用蓝色, border-radius　设置为 50% ，这不就出来了么。<br>然后岛边上的圆了，边上的圆怎么处理？<br>边上的圆怎么看都像一个元素啊？可要用一个元素实现，我们要怎么做呢？既然不能是一个真实的元素，那我们可以借助 css 伪元素的概念写出来。再将它移到合适的位置。另外，最外的小圆要围绕大圆转，这块我们可以借助 CSS3 的动画来实现，代码如下：</p>
+<p><img src="http://7xkopm.com1.z0.glb.clouddn.com/webwxgetmsgimg%20%285%29.jpg" alt=""><br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">	<span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"></span><br><span class="line">		<span class="selector-tag">html</span>, <span class="selector-tag">body</span> &#123;</span><br><span class="line">			<span class="attribute">margin</span>: <span class="number">0</span>;</span><br><span class="line">			<span class="attribute">padding</span>: <span class="number">0</span>;</span><br><span class="line">			<span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">			<span class="attribute">height</span>: <span class="number">100%</span>;</span><br><span class="line">			<span class="attribute">overflow</span>: hidden;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="selector-class">.cicle</span> &#123;</span><br><span class="line">			<span class="attribute">position</span>: relative;</span><br><span class="line">		    <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">		    <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">		    <span class="attribute">background-color</span>: <span class="number">#1c9dd1</span>;</span><br><span class="line">		    <span class="attribute">background-clip</span>: content-box;</span><br><span class="line">		    <span class="attribute">padding</span>: <span class="number">20px</span>;</span><br><span class="line">		    <span class="attribute">border</span>: <span class="number">2px</span> solid <span class="number">#1c9dd1</span>;</span><br><span class="line">		    <span class="attribute">border-radius</span>: <span class="number">50%</span>;</span><br><span class="line">	  	&#125;</span><br><span class="line">	    <span class="selector-class">.cicle</span><span class="selector-pseudo">:after</span> &#123;</span><br><span class="line">	        <span class="attribute">content</span>: <span class="string">""</span>;</span><br><span class="line">		    <span class="attribute">position</span>: absolute;</span><br><span class="line">		    <span class="attribute">top</span>: <span class="number">60px</span>;</span><br><span class="line">    		<span class="attribute">left</span>: <span class="number">60px</span>;</span><br><span class="line">		    <span class="attribute">width</span>: <span class="number">20px</span>;</span><br><span class="line">		    <span class="attribute">height</span>: <span class="number">20px</span>;</span><br><span class="line">		    <span class="attribute">border-radius</span>: <span class="number">50%</span>;</span><br><span class="line">		    <span class="attribute">background-color</span>: <span class="number">#1c9dd1</span>;</span><br><span class="line">		    <span class="attribute">animation</span>: cicleRotate <span class="number">6s</span> linear infinite;</span><br><span class="line">	    &#125;</span><br><span class="line">	    @<span class="keyword">keyframes</span> cicleRotate &#123;</span><br><span class="line">			<span class="selector-tag">from</span> &#123;</span><br><span class="line">				<span class="attribute">transform</span>: <span class="built_in">rotate</span>(-360deg) <span class="built_in">translate</span>(71px) <span class="built_in">rotate</span>(360deg);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="selector-tag">to</span> &#123;</span><br><span class="line">				<span class="attribute">transform</span>: <span class="built_in">rotate</span>(0deg) <span class="built_in">translate</span>(71px) <span class="built_in">rotate</span>(0deg);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	</span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"cicle"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+
+  </section>
+
+  
+  
+
+<section class="post-comments">
+
+    <div class="ds-thread" data-thread-key="2017/08/03/CSS background-clip 的应用/"></div>
+
+    <script type="text/javascript">
+      var duoshuoQuery = {short_name:"letian"};
+      (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+        || document.getElementsByTagName('body')[0]).appendChild(ds);
+      })();
+    </script> 
+
+</section>
+
+
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright">&copy; 2014-2015. | 由<a href="https://hexo.io/">Hexo</a>强力驱动 | 主题<a href="https://github.com/someus/huno">Huno</a></span>
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript"> 
+        $(document).ready(function(){
+            MathJax.Hub.Config({ 
+                tex2jax: {inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']]} 
+            });
+        });
+    </script>
+
+
+    
+
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>
